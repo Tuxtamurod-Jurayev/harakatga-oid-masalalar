@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harakatga doir masalalar | Zamonaviy Didaktik O'yin</title>
+  <title>Harakatga doir masalalar | Professional Didaktik Simulyator</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -13,7 +13,7 @@
       --warning: #f59e0b;
       --danger: #ef4444;
       --surface: #ffffff;
-      --surface-glass: rgba(255, 255, 255, 0.92);
+      --surface-glass: rgba(255, 255, 255, 0.94);
       --text-main: #0f172a;
       --text-muted: #64748b;
       --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
@@ -42,7 +42,7 @@
     /* HEADER */
     header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       max-width: 980px;
       width: 100%;
       position: relative;
@@ -81,6 +81,8 @@
       position: absolute;
       top: 0;
       right: 0;
+      display: flex;
+      gap: 8px;
     }
 
     .icon-btn {
@@ -113,7 +115,7 @@
       padding: 8px;
       border-radius: 18px;
       box-shadow: var(--shadow-md);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       width: 100%;
       max-width: 980px;
       border: 1px solid rgba(255, 255, 255, 0.7);
@@ -135,23 +137,14 @@
       gap: 10px;
       transition: all 0.25s ease;
     }
-    .tab-btn svg {
-      width: 20px;
-      height: 20px;
-      stroke-width: 2.2;
-    }
-    .tab-btn:hover {
-      background: #f1f5f9;
-      color: var(--primary);
-    }
+    .tab-btn svg { width: 20px; height: 20px; stroke-width: 2.2; }
+    .tab-btn:hover { background: #f1f5f9; color: var(--primary); }
     .tab-btn.active {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
       box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
     }
-    .tab-btn.active svg {
-      stroke: white;
-    }
+    .tab-btn.active svg { stroke: white; }
 
     /* MAIN CONTAINER */
     .main-card {
@@ -165,7 +158,7 @@
       border: 1px solid #e2e8f0;
     }
 
-    /* HEADER OF SECTION */
+    /* SECTION HEADER & DIFFICULTY PROGRESSION */
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -186,35 +179,70 @@
 
     .stats-group {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .pill-stat {
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 6px 13px;
       border-radius: 12px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 800;
     }
-    .pill-score {
-      background: #fef3c7;
-      border: 1px solid #fde68a;
-      color: #92400e;
+    .pill-score { background: #fef3c7; border: 1px solid #fde68a; color: #92400e; }
+    .pill-streak { background: #fdf2f8; border: 1px solid #fbcfe8; color: #9d174d; }
+
+    /* Difficulty Badges */
+    .diff-badge {
+      padding: 5px 12px;
+      border-radius: 10px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
     }
-    .pill-streak {
-      background: #fdf2f8;
-      border: 1px solid #fbcfe8;
-      color: #9d174d;
+    .diff-easy { background: #dcfce7; color: #15803d; border-color: #86efac; }
+    .diff-med { background: #fef9c3; color: #a16207; border-color: #fde047; }
+    .diff-hard { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+
+    /* Difficulty Switcher Selector */
+    .diff-selector {
+      display: flex;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 3px;
+      gap: 4px;
+    }
+    .diff-btn {
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      color: #64748b;
+      transition: all 0.2s;
+    }
+    .diff-btn.active {
+      background: white;
+      color: #0f172a;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
     /* PROBLEM CARD */
     .problem-box {
       background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
       border-left: 6px solid var(--primary);
-      padding: 20px 22px;
+      padding: 18px 22px;
       border-radius: 16px;
       margin-bottom: 20px;
       box-shadow: var(--shadow-sm);
@@ -242,8 +270,8 @@
     }
 
     .problem-category {
-      font-size: 0.9rem;
-      font-weight: 800;
+      font-size: 0.95rem;
+      font-weight: 900;
       color: #0369a1;
       display: flex;
       align-items: center;
@@ -290,11 +318,7 @@
       gap: 5px;
       transition: all 0.2s;
     }
-    .hint-btn:hover {
-      background: #f8fafc;
-      border-color: #3b82f6;
-      color: #1d4ed8;
-    }
+    .hint-btn:hover { background: #f8fafc; border-color: #3b82f6; color: #1d4ed8; }
 
     /* CANVAS & SCENERY */
     .canvas-container {
@@ -323,17 +347,11 @@
       background: rgba(255, 255, 255, 0.9);
       border-radius: 50%;
     }
-    .cloud-1 {
-      width: 90px; height: 30px; top: 20px; left: -100px;
-      animation-duration: 32s;
-    }
+    .cloud-1 { width: 90px; height: 30px; top: 20px; left: -100px; animation-duration: 34s; }
     .cloud-1::before { width: 45px; height: 45px; top: -20px; left: 15px; }
     .cloud-1::after { width: 35px; height: 35px; top: -14px; left: 45px; }
 
-    .cloud-2 {
-      width: 70px; height: 24px; top: 48px; left: -80px;
-      animation-duration: 24s; animation-delay: 10s;
-    }
+    .cloud-2 { width: 70px; height: 24px; top: 48px; left: -80px; animation-duration: 25s; animation-delay: 10s; }
     .cloud-2::before { width: 32px; height: 32px; top: -14px; left: 12px; }
 
     @keyframes floatCloud {
@@ -341,7 +359,7 @@
       100% { transform: translateX(1100px); }
     }
 
-    /* Mountains */
+    /* Mountains & Trees */
     .mountains {
       position: absolute;
       bottom: 125px;
@@ -364,7 +382,7 @@
       top: 14px;
       font-size: 0.95rem;
       font-weight: 800;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.94);
       backdrop-filter: blur(6px);
       padding: 6px 14px;
       border-radius: 12px;
@@ -408,15 +426,16 @@
       background: repeating-linear-gradient(90deg, #facc15, #facc15 28px, transparent 28px, transparent 56px);
     }
 
-    /* VEHICLE BOX & ROTATING WHEELS (FIXED & TUNED) */
+    /* ADVANCED VEHICLE BOX & SUSPENSION & PARTICLES */
     .vehicle-box {
       position: absolute;
-      bottom: 54px;
+      bottom: 53px;
       height: 60px;
       z-index: 10;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.45));
       display: flex;
       align-items: flex-end;
+      pointer-events: none;
     }
 
     .vehicle-tag {
@@ -424,7 +443,7 @@
       top: -24px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.92);
       color: white;
       padding: 3px 8px;
       border-radius: 8px;
@@ -432,33 +451,64 @@
       font-weight: 800;
       white-space: nowrap;
       box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.25);
     }
 
-    /* Crucial: Wheel Rotation around its own center inside SVG */
+    /* Headlight light beam on road */
+    .headlight-cone {
+      position: absolute;
+      top: 24px;
+      right: -55px;
+      width: 60px;
+      height: 32px;
+      background: linear-gradient(to right, rgba(254, 240, 138, 0.65), rgba(254, 240, 138, 0));
+      clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 65%);
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    /* Siren Flasher for Police & Ambulance */
+    @keyframes sirenStrobe {
+      0%, 100% { fill: #ef4444; filter: drop-shadow(0 0 6px #ef4444); }
+      50% { fill: #3b82f6; filter: drop-shadow(0 0 6px #3b82f6); }
+    }
+    .siren-light {
+      animation: sirenStrobe 0.4s infinite;
+    }
+
+    /* Wheel Rotation */
     .wheel-rim {
       transform-box: fill-box;
       transform-origin: 50% 50%;
     }
 
-    /* Forward movement (to the right): wheels spin clockwise */
     @keyframes spinClockwise {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
-    /* Backward / Leftward movement: wheels spin counter-clockwise */
     @keyframes spinCounterClockwise {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(-360deg); }
     }
 
-    .is-moving-forward .wheel-rim {
-      animation: spinClockwise 0.32s linear infinite;
+    /* Suspension micro-vibration when driving */
+    @keyframes carSuspension {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-1.2px); }
     }
 
+    .is-moving-forward {
+      animation: carSuspension 0.25s infinite ease-in-out;
+    }
+    .is-moving-forward .wheel-rim {
+      animation: spinClockwise 0.3s linear infinite;
+    }
+
+    .is-moving-backward {
+      animation: carSuspension 0.25s infinite ease-in-out;
+    }
     .is-moving-backward .wheel-rim {
-      animation: spinCounterClockwise 0.32s linear infinite;
+      animation: spinCounterClockwise 0.3s linear infinite;
     }
 
     /* Destination Checkpoint Flag */
@@ -576,37 +626,14 @@
       transition: all 0.2s ease;
       box-shadow: var(--shadow-md);
     }
-    .btn svg {
-      width: 22px;
-      height: 22px;
-      stroke-width: 2.3;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-    .btn:active {
-      transform: translateY(0);
-    }
+    .btn svg { width: 22px; height: 22px; stroke-width: 2.3; }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn:active { transform: translateY(0); }
 
-    .btn-action {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
-    }
-
-    .btn-next {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-    }
-
-    .btn-secondary {
-      background: #f1f5f9;
-      color: #334155;
-      border: 1px solid #cbd5e1;
-    }
-    .btn-secondary:hover {
-      background: #e2e8f0;
-    }
+    .btn-action { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; }
+    .btn-next { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+    .btn-secondary { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+    .btn-secondary:hover { background: #e2e8f0; }
 
     /* RESULT BANNER */
     .result-alert {
@@ -622,24 +649,12 @@
       gap: 14px;
       animation: popIn 0.3s ease;
     }
-
     @keyframes popIn {
       from { transform: scale(0.95); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
-
-    .result-alert.success {
-      display: flex;
-      background: #dcfce7;
-      color: #065f46;
-      border: 2px solid #86efac;
-    }
-    .result-alert.error {
-      display: flex;
-      background: #fee2e2;
-      color: #991b1b;
-      border: 2px solid #fca5a5;
-    }
+    .result-alert.success { display: flex; background: #dcfce7; color: #065f46; border: 2px solid #86efac; }
+    .result-alert.error { display: flex; background: #fee2e2; color: #991b1b; border: 2px solid #fca5a5; }
 
     /* SECTION 3: LAB */
     .lab-box {
@@ -763,18 +778,8 @@
       align-items: center;
       margin-bottom: 14px;
     }
-    .modal-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #1e293b;
-    }
-    .close-modal {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #64748b;
-    }
+    .modal-title { font-size: 1.3rem; font-weight: 800; color: #1e293b; }
+    .close-modal { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b; }
 
     @media (max-width: 640px) {
       h1 { font-size: 1.6rem; }
@@ -836,7 +841,13 @@
           1-BOSQICH: Oddiy to'g'ri chiziqli harakat
         </div>
         <div class="stats-group">
-          <div class="pill-stat pill-score">⭐ To'g'ri: <span id="score1">0</span></div>
+          <!-- Manual / Auto Difficulty Selector -->
+          <div class="diff-selector">
+            <button class="diff-btn active" id="diffBtn1" onclick="setManualDifficulty(1, 1)">🟢 Oson</button>
+            <button class="diff-btn" id="diffBtn2" onclick="setManualDifficulty(1, 2)">🟡 O'rtacha</button>
+            <button class="diff-btn" id="diffBtn3" onclick="setManualDifficulty(1, 3)">🔴 Murakkab</button>
+          </div>
+          <div class="pill-stat pill-score">⭐ Ball: <span id="score1">0</span></div>
           <div class="pill-stat pill-streak">🔥 Ketma-ket: <span id="streak1">0</span></div>
         </div>
       </div>
@@ -848,6 +859,7 @@
             Masala № <span id="p1-number">1</span>
           </div>
           <div class="problem-category" id="p1-category">Transport harakati</div>
+          <div class="diff-badge diff-easy" id="p1-diff-tag">🟢 Oson daraja</div>
         </div>
         <div class="problem-text" id="p1-text">Masala yuklanmoqda...</div>
         <div class="problem-footer">
@@ -911,6 +923,7 @@
         <!-- DYNAMIC VEHICLE (FACES TO THE RIGHT ➔) -->
         <div class="vehicle-box" id="car1" style="left: 20px;">
           <div class="vehicle-tag" id="car1-label">40 km/h</div>
+          <div class="headlight-cone"></div>
           <div id="car1-svg-wrap"></div>
         </div>
 
@@ -952,7 +965,12 @@
           2-BOSQICH: Qarama-qarshi harakat (Uchrashuv)
         </div>
         <div class="stats-group">
-          <div class="pill-stat pill-score">⭐ To'g'ri: <span id="score2">0</span></div>
+          <div class="diff-selector">
+            <button class="diff-btn active" id="diff2Btn1" onclick="setManualDifficulty(2, 1)">🟢 Oson</button>
+            <button class="diff-btn" id="diff2Btn2" onclick="setManualDifficulty(2, 2)">🟡 O'rtacha</button>
+            <button class="diff-btn" id="diff2Btn3" onclick="setManualDifficulty(2, 3)">🔴 Murakkab</button>
+          </div>
+          <div class="pill-stat pill-score">⭐ Ball: <span id="score2">0</span></div>
           <div class="pill-stat pill-streak">🔥 Ketma-ket: <span id="streak2">0</span></div>
         </div>
       </div>
@@ -963,6 +981,7 @@
             Masala № <span id="p2-number">1</span>
           </div>
           <div class="problem-category" style="color: #6d28d9;" id="p2-category">Uchrashuv harakati</div>
+          <div class="diff-badge diff-easy" id="p2-diff-tag">🟢 Oson daraja</div>
         </div>
         <div class="problem-text" id="p2-text">Masala yuklanmoqda...</div>
         <div class="problem-footer">
@@ -987,7 +1006,7 @@
         </div>
 
         <div class="city-card city-right">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="10" r="3"></circle></svg>
           <span id="p2-city-b">B shahar</span>
         </div>
 
@@ -999,12 +1018,14 @@
         <!-- Left Vehicle: Faces RIGHT ➔ -->
         <div class="vehicle-box" id="car2-left" style="left: 20px;">
           <div class="vehicle-tag" id="car2-left-label">50 km/h</div>
+          <div class="headlight-cone"></div>
           <div id="car2-left-svg"></div>
         </div>
 
         <!-- Right Vehicle: Faces LEFT ⬅️ -->
         <div class="vehicle-box" id="car2-right" style="right: 20px;">
           <div class="vehicle-tag" id="car2-right-label">70 km/h</div>
+          <div class="headlight-cone" style="left: -55px; right: auto; transform: scaleX(-1);"></div>
           <div id="car2-right-svg"></div>
         </div>
 
@@ -1082,6 +1103,7 @@
         <!-- Lab Vehicle: Faces RIGHT ➔ -->
         <div class="vehicle-box" id="car3" style="left: 20px;">
           <div class="vehicle-tag" id="car3-label">60 km/h</div>
+          <div class="headlight-cone"></div>
           <div id="car3-svg-wrap"></div>
         </div>
 
@@ -1118,50 +1140,43 @@
 
   <script>
     // ==========================================
-    // VECTOR VEHICLE FACTORY (All models face RIGHT by default!)
-    // Front on RIGHT (x ~ 120-160), Rear on LEFT (x ~ 10-20)
+    // EXTENDED VECTOR VEHICLE FACTORY (10+ DISTINCT VEHICLES!)
+    // All designed with Front on RIGHT (x ~ 120-160), Rear on LEFT (x ~ 10-20)
     // ==========================================
 
     function createWheelMarkup(cx, cy, r = 13) {
       return `
         <g class="wheel-rim">
           <circle cx="${cx}" cy="${cy}" r="${r}" fill="#0f172a" />
-          <circle cx="${cx}" cy="${cy}" r="${r * 0.6}" fill="#94a3b8" />
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.6}" fill="#cbd5e1" />
           <circle cx="${cx}" cy="${cy}" r="${r * 0.28}" fill="#0f172a" />
-          <line x1="${cx}" y1="${cy - r + 2}" x2="${cx}" y2="${cy + r - 2}" stroke="#1e293b" stroke-width="2.5" />
-          <line x1="${cx - r + 2}" y1="${cy}" x2="${cx + r - 2}" y2="${cy}" stroke="#1e293b" stroke-width="2.5" />
-          <line x1="${cx - r*0.7}" y1="${cy - r*0.7}" x2="${cx + r*0.7}" y2="${cy + r*0.7}" stroke="#1e293b" stroke-width="2" />
-          <line x1="${cx - r*0.7}" y1="${cy + r*0.7}" x2="${cx + r*0.7}" y2="${cy - r*0.7}" stroke="#1e293b" stroke-width="2" />
+          <line x1="${cx}" y1="${cy - r + 2}" x2="${cx}" y2="${cy + r - 2}" stroke="#334155" stroke-width="2.5" />
+          <line x1="${cx - r + 2}" y1="${cy}" x2="${cx + r - 2}" y2="${cy}" stroke="#334155" stroke-width="2.5" />
+          <line x1="${cx - r*0.7}" y1="${cy - r*0.7}" x2="${cx + r*0.7}" y2="${cy + r*0.7}" stroke="#334155" stroke-width="2" />
+          <line x1="${cx - r*0.7}" y1="${cy + r*0.7}" x2="${cx + r*0.7}" y2="${cy - r*0.7}" stroke="#334155" stroke-width="2" />
         </g>
       `;
     }
 
     function getVehicleSvg(type, faceRight = true, customColor = null) {
-      // If faceRight is false, we mirror horizontally so it faces LEFT
       const transform = faceRight ? '' : 'style="transform: scaleX(-1);"';
 
-      // 1. YUK MASHINASI (TRUCK) - Real big rig: Cargo bed on left, Cab on right!
+      // 1. TRUCK (Yuk mashinasi / Fura)
       if (type === 'truck') {
         const bodyColor = customColor || '#0284c7';
         return `
           <svg viewBox="0 0 170 75" width="125" height="55" ${transform}>
             <ellipse cx="85" cy="68" rx="75" ry="5" fill="rgba(0,0,0,0.3)" />
-            <!-- Cargo Container (Left) -->
             <rect x="8" y="14" width="94" height="42" rx="4" fill="#334155" />
             <rect x="12" y="18" width="86" height="34" rx="2" fill="#475569" />
             <line x1="34" y1="18" x2="34" y2="52" stroke="#1e293b" stroke-width="2" />
             <line x1="56" y1="18" x2="56" y2="52" stroke="#1e293b" stroke-width="2" />
             <line x1="78" y1="18" x2="78" y2="52" stroke="#1e293b" stroke-width="2" />
-            <!-- Cab (Right, Facing Right) -->
             <path d="M102,28 L126,28 L142,38 L160,44 L160,56 L102,56 Z" fill="${bodyColor}" />
-            <!-- Cab Windshield (Facing Right) -->
             <path d="M124,31 L139,40 L124,40 Z" fill="#93c5fd" />
-            <!-- Front Grill & Headlight (On Right!) -->
             <rect x="156" y="45" width="4" height="10" fill="#cbd5e1" />
             <polygon points="156,48 162,50 156,53" fill="#fef08a" />
-            <!-- Exhaust stack -->
             <rect x="104" y="8" width="5" height="20" fill="#94a3b8" rx="2" />
-            <!-- Wheels (Rear dual + Front cab) -->
             ${createWheelMarkup(32, 57, 13)}
             ${createWheelMarkup(64, 57, 13)}
             ${createWheelMarkup(138, 57, 13)}
@@ -1169,27 +1184,20 @@
         `;
       }
 
-      // 2. TEZYURAR POYEZD ("AFROSIYOB" BULLET TRAIN) - Sleek aerodynamic nose facing right!
+      // 2. TRAIN ("Afrosiyob" Bullet Train)
       if (type === 'train') {
         return `
           <svg viewBox="0 0 180 70" width="135" height="52" ${transform}>
             <ellipse cx="90" cy="65" rx="80" ry="4" fill="rgba(0,0,0,0.3)" />
-            <!-- Aerodynamic body -->
             <path d="M10,24 L120,24 Q155,24 175,44 L175,54 L10,54 Z" fill="#f8fafc" />
-            <!-- Turquoise & Blue stripes like Afrosiyob -->
             <path d="M10,40 L135,40 Q158,40 172,48 L174,54 L10,54 Z" fill="#0284c7" />
             <rect x="10" y="36" width="130" height="3" fill="#0d9488" />
-            <!-- Cockpit Glass (Sharp nose on right) -->
             <path d="M136,28 Q155,29 168,40 L146,40 Z" fill="#1e293b" />
-            <!-- Passenger Windows -->
             <rect x="20" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
             <rect x="42" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
             <rect x="64" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
             <rect x="86" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
-            <rect x="108" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
-            <!-- Front LED light on right -->
             <circle cx="172" cy="46" r="3" fill="#fef08a" />
-            <!-- Wheels behind skirt -->
             ${createWheelMarkup(36, 56, 11)}
             ${createWheelMarkup(65, 56, 11)}
             ${createWheelMarkup(125, 56, 11)}
@@ -1197,90 +1205,167 @@
         `;
       }
 
-      // 3. AVTOBUS (BUS) - Long passenger bus with windows, facing right
+      // 3. BUS (Sayyohlik avtobusi)
       if (type === 'bus') {
         const bodyColor = customColor || '#eab308';
         return `
           <svg viewBox="0 0 160 75" width="120" height="56" ${transform}>
             <ellipse cx="80" cy="68" rx="70" ry="4" fill="rgba(0,0,0,0.3)" />
             <path d="M8,20 L130,20 Q148,20 154,32 L154,58 L8,58 Z" fill="${bodyColor}" />
-            <!-- Front Windshield on right -->
             <path d="M132,24 L148,34 L132,34 Z" fill="#bae6fd" />
-            <!-- Passenger Windows -->
             <rect x="16" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
             <rect x="40" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
             <rect x="64" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
             <rect x="88" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
             <rect x="112" y="24" width="14" height="12" rx="2" fill="#e0f2fe" />
-            <!-- Headlights right -->
             <circle cx="152" cy="48" r="3.5" fill="#fef08a" />
-            <circle cx="10" cy="48" r="3" fill="#ef4444" />
-            <!-- Wheels -->
             ${createWheelMarkup(38, 58, 13)}
             ${createWheelMarkup(124, 58, 13)}
           </svg>
         `;
       }
 
-      // 4. SPORTKAR (RACE CAR) - Aggressive low spoiler on left, sharp nose on right
+      // 4. POLICE CAR (YPX / Patrul mashinasi) with Strobe Siren!
+      if (type === 'police') {
+        return `
+          <svg viewBox="0 0 145 70" width="112" height="52" ${transform}>
+            <ellipse cx="72" cy="65" rx="62" ry="4" fill="rgba(0,0,0,0.35)" />
+            <!-- Police Siren Beacon on roof -->
+            <rect x="74" y="16" width="16" height="6" rx="2" class="siren-light" />
+            <path d="M12,46 Q16,36 32,34 L56,34 L82,22 Q104,22 118,34 L138,44 Q142,48 140,56 L12,56 Z" fill="#f8fafc" />
+            <!-- Blue Police Stripe -->
+            <path d="M12,44 L140,44 L140,50 L12,50 Z" fill="#1d4ed8" />
+            <text x="54" y="49" font-size="6" font-weight="900" fill="white">POLICE</text>
+            <path d="M55,34 L80,24 Q100,24 112,34 L122,42 L55,42 Z" fill="#93c5fd" opacity="0.9" />
+            <polygon points="134,46 141,49 134,51" fill="#fef08a" />
+            ${createWheelMarkup(36, 56, 13)}
+            ${createWheelMarkup(114, 56, 13)}
+          </svg>
+        `;
+      }
+
+      // 5. AMBULANCE (Tez yordam mashinasi) with Red Cross & Siren!
+      if (type === 'ambulance') {
+        return `
+          <svg viewBox="0 0 155 75" width="118" height="56" ${transform}>
+            <ellipse cx="78" cy="68" rx="68" ry="4" fill="rgba(0,0,0,0.3)" />
+            <!-- Red Flasher -->
+            <circle cx="95" cy="16" r="4" class="siren-light" fill="#ef4444" />
+            <path d="M10,22 L110,22 L132,34 L148,44 L148,58 L10,58 Z" fill="#ffffff" />
+            <path d="M108,26 L128,36 L108,36 Z" fill="#bae6fd" />
+            <!-- Red Medical Cross -->
+            <rect x="52" y="30" width="16" height="6" fill="#dc2626" rx="1" />
+            <rect x="57" y="25" width="6" height="16" fill="#dc2626" rx="1" />
+            <rect x="10" y="44" width="138" height="4" fill="#dc2626" />
+            <circle cx="146" cy="50" r="3.5" fill="#fef08a" />
+            ${createWheelMarkup(36, 58, 13)}
+            ${createWheelMarkup(120, 58, 13)}
+          </svg>
+        `;
+      }
+
+      // 6. TRACTOR (Qishloq xo'jaligi traktori)
+      if (type === 'tractor') {
+        return `
+          <svg viewBox="0 0 140 80" width="110" height="58" ${transform}>
+            <ellipse cx="70" cy="72" rx="60" ry="4" fill="rgba(0,0,0,0.3)" />
+            <!-- Cabin (Left/Center) -->
+            <rect x="22" y="16" width="38" height="38" rx="3" fill="#15803d" />
+            <rect x="26" y="20" width="30" height="20" rx="2" fill="#bae6fd" />
+            <!-- Engine Hood (Right) -->
+            <path d="M60,34 L114,34 L118,48 L118,58 L60,58 Z" fill="#16a34a" />
+            <!-- Exhaust Pipe -->
+            <rect x="88" y="10" width="4" height="24" fill="#334155" rx="1" />
+            <circle cx="116" cy="46" r="3.5" fill="#fef08a" />
+            <!-- Huge Rear Wheel (Left) + Small Front Wheel (Right) -->
+            ${createWheelMarkup(36, 56, 18)}
+            ${createWheelMarkup(106, 62, 10)}
+          </svg>
+        `;
+      }
+
+      // 7. DAMAS (O'zbekistonning mashhur ixcham mikroavtobusi)
+      if (type === 'damas') {
+        return `
+          <svg viewBox="0 0 140 70" width="108" height="52" ${transform}>
+            <ellipse cx="70" cy="65" rx="60" ry="4" fill="rgba(0,0,0,0.3)" />
+            <path d="M10,24 L104,24 L124,38 L132,48 L132,56 L10,56 Z" fill="#ffffff" />
+            <!-- Windows -->
+            <rect x="18" y="28" width="22" height="12" rx="2" fill="#bae6fd" />
+            <rect x="46" y="28" width="24" height="12" rx="2" fill="#bae6fd" />
+            <path d="M76,28 L102,28 L116,38 L76,38 Z" fill="#bae6fd" />
+            <!-- Stripe -->
+            <rect x="10" y="44" width="122" height="3" fill="#0284c7" />
+            <circle cx="130" cy="48" r="3" fill="#fef08a" />
+            ${createWheelMarkup(34, 56, 12)}
+            ${createWheelMarkup(106, 56, 12)}
+          </svg>
+        `;
+      }
+
+      // 8. BICYCLE (Sport velosipedchisi)
+      if (type === 'bicycle') {
+        return `
+          <svg viewBox="0 0 120 70" width="95" height="54" ${transform}>
+            <ellipse cx="60" cy="65" rx="48" ry="3" fill="rgba(0,0,0,0.25)" />
+            <!-- Cyclist -->
+            <circle cx="58" cy="18" r="7" fill="#1e293b" />
+            <path d="M54,26 L64,36 L50,46" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round" />
+            <!-- Bike frame (facing right) -->
+            <polygon points="32,54 58,54 78,38 52,38" fill="none" stroke="#ef4444" stroke-width="3" />
+            <line x1="78" y1="38" x2="88" y2="54" stroke="#ef4444" stroke-width="3" />
+            <line x1="74" y1="34" x2="82" y2="34" stroke="#0f172a" stroke-width="3" />
+            ${createWheelMarkup(32, 54, 12)}
+            ${createWheelMarkup(88, 54, 12)}
+          </svg>
+        `;
+      }
+
+      // 9. SPORT (Poyga sportkari)
       if (type === 'sport') {
         const bodyColor = customColor || '#dc2626';
         return `
           <svg viewBox="0 0 150 70" width="115" height="52" ${transform}>
             <ellipse cx="75" cy="65" rx="65" ry="4" fill="rgba(0,0,0,0.35)" />
-            <!-- Rear Spoiler (Left) -->
             <rect x="12" y="22" width="6" height="14" fill="#0f172a" />
             <rect x="8" y="20" width="22" height="4" rx="2" fill="#0f172a" />
-            <!-- Low Slung Body (Front on Right) -->
             <path d="M16,42 Q28,28 50,28 L82,24 Q106,24 130,40 L144,48 L144,56 L16,56 Z" fill="${bodyColor}" />
-            <!-- Cockpit Glass -->
             <path d="M54,30 L80,26 Q98,26 112,38 L54,38 Z" fill="#1e293b" />
-            <!-- Sharp LED Headlight (Right) -->
             <polygon points="138,45 145,49 138,51" fill="#fef08a" />
-            <!-- Wheels -->
             ${createWheelMarkup(38, 56, 13)}
             ${createWheelMarkup(116, 56, 13)}
           </svg>
         `;
       }
 
-      // 5. MOTOTSIKL (MOTORCYCLE) - Courier with delivery box on left, front wheel on right
+      // 10. MOTO (Tezkor kuryer)
       if (type === 'moto') {
         return `
           <svg viewBox="0 0 120 70" width="95" height="55" ${transform}>
             <ellipse cx="60" cy="65" rx="45" ry="3.5" fill="rgba(0,0,0,0.3)" />
-            <!-- Delivery Box (Left) -->
             <rect x="12" y="20" width="26" height="24" rx="3" fill="#ea580c" />
-            <text x="18" y="36" font-size="10" font-weight="bold" fill="white">BOX</text>
-            <!-- Rider & Bike Frame -->
+            <text x="17" y="36" font-size="9" font-weight="900" fill="white">BOX</text>
             <circle cx="56" cy="18" r="8" fill="#1e293b" />
             <path d="M52,26 L62,38 L48,46" stroke="#2563eb" stroke-width="5" stroke-linecap="round" />
             <path d="M36,46 L60,46 L82,32 L94,48" stroke="#334155" stroke-width="4" fill="none" />
-            <!-- Handlebars & Front Headlight (Right) -->
             <line x1="78" y1="28" x2="86" y2="34" stroke="#0f172a" stroke-width="3" />
             <circle cx="94" cy="38" r="3" fill="#fef08a" />
-            <!-- Wheels -->
             ${createWheelMarkup(26, 54, 13)}
             ${createWheelMarkup(94, 54, 13)}
           </svg>
         `;
       }
 
-      // 6. DEFAULT: MODERN ELECTRIC SEDAN (COBALT / MALIBU STYLE) - Front on RIGHT!
+      // 11. DEFAULT: SEDAN (Cobalt / Gentra / Malibu)
       const bodyColor = customColor || '#2563eb';
       return `
         <svg viewBox="0 0 145 70" width="112" height="52" ${transform}>
           <ellipse cx="72" cy="65" rx="62" ry="4" fill="rgba(0,0,0,0.35)" />
-          <!-- Aerodynamic Sedan Body (Hood on Right, Trunk on Left) -->
           <path d="M12,46 Q16,36 32,34 L56,34 L82,22 Q104,22 118,34 L138,44 Q142,48 140,56 L12,56 Z" fill="${bodyColor}" />
-          <!-- Cabin Glass -->
           <path d="M55,34 L80,24 Q100,24 112,34 L122,42 L55,42 Z" fill="#93c5fd" opacity="0.9" />
           <line x1="84" y1="24" x2="84" y2="42" stroke="#1e293b" stroke-width="2" />
-          <!-- Headlight (Front Right!) -->
           <polygon points="134,46 141,49 134,51" fill="#fef08a" />
-          <!-- Taillight (Rear Left!) -->
           <polygon points="13,47 10,49 13,51" fill="#ef4444" />
-          <!-- Wheels -->
           ${createWheelMarkup(36, 56, 13)}
           ${createWheelMarkup(114, 56, 13)}
         </svg>
@@ -1331,8 +1416,8 @@
 
     function playWinSound() {
       if (!soundEnabled) return;
-      [261.6, 329.6, 392.0, 523.3].forEach((f, i) => {
-        setTimeout(() => playTone(f, 0.22, 'triangle', 0.2), i * 100);
+      [261.6, 329.6, 392.0, 523.3, 659.3].forEach((f, i) => {
+        setTimeout(() => playTone(f, 0.22, 'triangle', 0.2), i * 90);
       });
     }
 
@@ -1343,151 +1428,282 @@
     }
 
     // ==========================================
-    // TAB MANAGEMENT
+    // PROGRESSIVE DIFFICULTY SYSTEM & EXTENDED QUESTION BANK
     // ==========================================
-    function switchTab(index) {
-      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', i + 1 === index);
-      });
-      document.getElementById('section1').style.display = index === 1 ? 'block' : 'none';
-      document.getElementById('section2').style.display = index === 2 ? 'block' : 'none';
-      document.getElementById('section3').style.display = index === 3 ? 'block' : 'none';
-      playTone(480, 0.08);
-
-      if (index === 1) renderRuler('ruler1', 240, 40);
-      if (index === 2) renderRuler('ruler2', 240, 40);
-      if (index === 3) {
-        renderRuler('ruler3', 300, 50);
-        updateLab();
-      }
-    }
-
-    function renderRuler(elementId, maxKm, stepKm) {
-      const el = document.getElementById(elementId);
-      el.innerHTML = '';
-      for (let km = 0; km <= maxKm; km += stepKm) {
-        const node = document.createElement('div');
-        node.className = 'ruler-node';
-        node.innerText = km + ' km';
-        el.appendChild(node);
-      }
-    }
-
-    // ==========================================
-    // 1-BOSQICH: MASALALAR BAZASI VA HAR XIL MASHINALAR
-    // ==========================================
+    let currentDifficulty1 = 1; // 1: Oson, 2: O'rtacha, 3: Murakkab
+    let currentDifficulty2 = 1;
     let score1 = 0, streak1 = 0, p1Index = 1;
-    let currentP1 = {};
-    const maxKm1 = 240;
+    let score2 = 0, streak2 = 0, p2Index = 1;
+    let currentP1 = {}, currentP2 = {};
+    const maxKm1 = 240, maxKm2 = 240;
 
-    const problemPool1 = [
-      // 1. Yuk mashinasi -> TRUCK
+    function setManualDifficulty(section, diff) {
+      if (section === 1) {
+        currentDifficulty1 = diff;
+        [1, 2, 3].forEach(d => {
+          document.getElementById('diffBtn' + d).classList.toggle('active', d === diff);
+        });
+        loadP1();
+      } else {
+        currentDifficulty2 = diff;
+        [1, 2, 3].forEach(d => {
+          document.getElementById('diff2Btn' + d).classList.toggle('active', d === diff);
+        });
+        loadP2();
+      }
+      playTone(550, 0.1);
+    }
+
+    function updateDifficultyUI(section, diff) {
+      const tag = document.getElementById(section === 1 ? 'p1-diff-tag' : 'p2-diff-tag');
+      const prefix = section === 1 ? 'diffBtn' : 'diff2Btn';
+      [1, 2, 3].forEach(d => {
+        const el = document.getElementById(prefix + d);
+        if (el) el.classList.toggle('active', d === diff);
+      });
+
+      if (diff === 1) {
+        tag.className = 'diff-badge diff-easy';
+        tag.innerHTML = '🟢 Oson daraja';
+      } else if (diff === 2) {
+        tag.className = 'diff-badge diff-med';
+        tag.innerHTML = '🟡 O\'rtacha daraja';
+      } else {
+        tag.className = 'diff-badge diff-hard';
+        tag.innerHTML = '🔴 Murakkab daraja';
+      }
+    }
+
+    // --- SECTION 1 PROBLEMS: BY DIFFICULTY ---
+    const bankS1_Easy = [
       () => {
-        const v = [40, 50, 60][Math.floor(Math.random() * 3)];
-        const t = [2, 3, 4][Math.floor(Math.random() * 3)];
-        const s = v * t;
+        const v = 15, t = 2, s = 30;
         return {
-          cat: "Yuk mashinasi",
-          vehicleType: "truck",
-          color: "#0284c7",
-          text: `Yuk tashuvchi mashina <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> uzoqlikdagi logistika markaziga yetib borishi uchun qancha vaqt (t) sarflaydi?`,
-          target: t, v, t, s, unit: 'soat',
-          label: 'Vaqtni toping (t):',
-          formula: 'Formula: t = S / v',
-          calc: `t = ${s} : ${v} = ${t} soat`,
-          hint: `Vaqtni topish uchun masofani tezlikka bo'lish zarur:<br><b>t = S / v</b><br>Bizda: S = ${s} km, v = ${v} km/soat.`
+          cat: "Sport velosipedchisi", vehicleType: "bicycle",
+          text: `Velosipedchi <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> harakatlandi. U qancha masofani (S) bosib o'tdi?`,
+          target: s, v, t, s, unit: 'km', label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t', calc: `S = ${v} · ${t} = ${s} km`,
+          hint: `Masofa = Tezlik × Vaqt: S = ${v} · ${t} = ${s} km.`
         };
       },
-      // 2. Afrosiyob tezyurar poyezdi -> TRAIN
       () => {
-        const t = [2, 3][Math.floor(Math.random() * 2)];
-        const v = [60, 70, 80][Math.floor(Math.random() * 3)];
-        const s = v * t;
+        const v = 20, t = 3, s = 60;
         return {
-          cat: "Afrosiyob poyezdi",
-          vehicleType: "train",
-          color: "#0284c7",
-          text: `"Afrosiyob" tezyurar poyezdi <b>${s} km</b> masofani bekatlarda to'xtamasdan <b>${t} soatda</b> bosib o'tdi. Poyezdning tezligini (v) aniqlang.`,
-          target: v, v, t, s, unit: 'km/soat',
-          label: 'Tezlikni toping (v):',
-          formula: 'Formula: v = S / t',
-          calc: `v = ${s} : ${t} = ${v} km/soat`,
-          hint: `Tezlikni topish uchun masofa vaqtga bo'linadi:<br><b>v = S / t</b><br>Bizda: S = ${s} km, t = ${t} soat.`
+          cat: "Traktor harakati", vehicleType: "tractor",
+          text: `Dalada ishlayotgan traktor <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> yurdi. U bosib o'tgan masofa (S) necha km?`,
+          target: s, v, t, s, unit: 'km', label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t', calc: `S = ${v} · ${t} = ${s} km`,
+          hint: `S = v · t = ${v} · ${t} = ${s} km.`
         };
       },
-      // 3. Cobalt yengil avtomobili -> SEDAN
       () => {
-        const v = [50, 60, 70, 80][Math.floor(Math.random() * 4)];
-        const t = [2, 3, 4][Math.floor(Math.random() * 3)];
-        const s = v * t;
+        const v = 50, t = 2, s = 100;
         return {
-          cat: "Cobalt yengil avtomobili",
-          vehicleType: "sedan",
-          color: "#2563eb",
-          text: `Cobalt avtomobili Toshkentdan Samarqandga tomon <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> to'xtovsiz harakatlandi. Avtomobil qancha masofani (S) bosib o'tdi?`,
-          target: s, v, t, s, unit: 'km',
-          label: 'Masofani toping (S):',
-          formula: 'Formula: S = v · t',
-          calc: `S = ${v} · ${t} = ${s} km`,
-          hint: `Masofani topish uchun tezlikni vaqtga ko'paytirish zarur:<br><b>S = v · t</b><br>Bizda: v = ${v} km/soat, t = ${t} soat.`
+          cat: "Damas yo'lovchi transporti", vehicleType: "damas",
+          text: `Damas mikroavtobusi <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> yo'l bosdi. U qancha masofani (S) ortda qoldirdi?`,
+          target: s, v, t, s, unit: 'km', label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t', calc: `S = ${v} · ${t} = ${s} km`,
+          hint: `Masofani hisoblash: S = ${v} · ${t} = ${s} km.`
         };
       },
-      // 4. Sayyohlik avtobusi -> BUS
       () => {
-        const v = [45, 55, 60][Math.floor(Math.random() * 3)];
-        const t = [2, 3, 4][Math.floor(Math.random() * 3)];
-        const s = v * t;
+        const v = 60, t = 3, s = 180;
         return {
-          cat: "Sayyohlik avtobusi",
-          vehicleType: "bus",
-          color: "#eab308",
-          text: `Sayyohlarni olib ketayotgan katta avtobus <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> yo'l yurdi. Sayyohlar necha kilometr masofani (S) ortda qoldirdi?`,
-          target: s, v, t, s, unit: 'km',
-          label: 'Masofani toping (S):',
-          formula: 'Formula: S = v · t',
-          calc: `S = ${v} · ${t} = ${s} km`,
-          hint: `Masofa formulasi: <b>S = v · t</b>.`
+          cat: "Cobalt avtomobili", vehicleType: "sedan", color: "#2563eb",
+          text: `Cobalt avtomobili <b>${v} km/soat</b> tezlikda <b>${t} soat</b> harakatlandi. Jami masofa (S) qancha?`,
+          target: s, v, t, s, unit: 'km', label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t', calc: `S = ${v} · ${t} = ${s} km`,
+          hint: `S = ${v} · ${t} = ${s} km.`
         };
       },
-      // 5. Tezkor kuryer -> MOTO
       () => {
-        const t = [2, 3][Math.floor(Math.random() * 2)];
-        const v = [50, 60, 70][Math.floor(Math.random() * 3)];
-        const s = v * t;
+        const v = 40, t = 2, s = 80;
         return {
-          cat: "Tezkor mototsikl kuryeri",
-          vehicleType: "moto",
-          color: "#ea580c",
-          text: `Tezkor kuryer shaharlararo <b>${s} km</b> masofani mototsiklda <b>${t} soatda</b> yetib bordi. Kuryer qanday tezlik (v) bilan harakatlangan?`,
-          target: v, v, t, s, unit: 'km/soat',
-          label: 'Tezlikni toping (v):',
-          formula: 'Formula: v = S / t',
-          calc: `v = ${s} : ${t} = ${v} km/soat`,
-          hint: `Tezlikni topish qoidasi: masofa bo'lingan vaqt: <b>v = S / t</b>.`
-        };
-      },
-      // 6. Qizil Sportkar -> SPORT
-      () => {
-        const v = [70, 80][Math.floor(Math.random() * 2)];
-        const t = [2, 3][Math.floor(Math.random() * 2)];
-        const s = v * t;
-        return {
-          cat: "Poyga sportkari",
-          vehicleType: "sport",
-          color: "#dc2626",
-          text: `Poyga mashinasi sinov trassasida <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> masofani bosib o'tishi uchun necha soat (t) kerak bo'ladi?`,
-          target: t, v, t, s, unit: 'soat',
-          label: 'Vaqtni toping (t):',
-          formula: 'Formula: t = S / v',
-          calc: `t = ${s} : ${v} = ${t} soat`,
-          hint: `Vaqtni topish formulasi: <b>t = S / v</b>.`
+          cat: "Yuk mashinasi", vehicleType: "truck",
+          text: `Yuk mashinasi <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> yo'l yurdi. Mashina necha kilometr yo'l yurgan?`,
+          target: s, v, t, s, unit: 'km', label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t', calc: `S = ${v} · ${t} = ${s} km`,
+          hint: `S = v · t = ${v} · ${t} = ${s} km.`
         };
       }
     ];
 
+    const bankS1_Medium = [
+      () => {
+        const v = 70, t = 2, s = 140;
+        return {
+          cat: "Tez yordam mashinasi", vehicleType: "ambulance",
+          text: `Tez yordam mashinasi chaqiruvga asosan <b>${s} km</b> masofani <b>${t} soatda</b> bosib o'tdi. Tez yordamning tezligi (v) qanday?`,
+          target: v, v, t, s, unit: 'km/soat', label: 'Tezlikni toping (v):',
+          formula: 'Formula: v = S / t', calc: `v = ${s} : ${t} = ${v} km/soat`,
+          hint: `Tezlikni topish uchun masofa vaqtga bo'linadi: v = ${s} : ${t} = ${v} km/soat.`
+        };
+      },
+      () => {
+        const v = 80, t = 2, s = 160;
+        return {
+          cat: "YPX Patrul mashinasi", vehicleType: "police",
+          text: `Patrul mashinasi <b>${s} km</b> masofani <b>${v} km/soat</b> tezlikda o'tishi uchun necha soat (t) sarflaydi?`,
+          target: t, v, t, s, unit: 'soat', label: 'Vaqtni toping (t):',
+          formula: 'Formula: t = S / v', calc: `t = ${s} : ${v} = ${t} soat`,
+          hint: `Vaqt: t = S / v = ${s} : ${v} = ${t} soat.`
+        };
+      },
+      () => {
+        const v = 70, t = 3, s = 210;
+        return {
+          cat: "Afrosiyob tezyurar poyezdi", vehicleType: "train",
+          text: `"Afrosiyob" tezyurar poyezdi <b>${s} km</b> masofani <b>${t} soatda</b> bosib o'tdi. Poyezd tezligini (v) aniqlang.`,
+          target: v, v, t, s, unit: 'km/soat', label: 'Tezlikni toping (v):',
+          formula: 'Formula: v = S / t', calc: `v = ${s} : ${t} = ${v} km/soat`,
+          hint: `v = ${s} : ${t} = ${v} km/soat.`
+        };
+      },
+      () => {
+        const v = 60, t = 4, s = 240;
+        return {
+          cat: "Sayyohlik avtobusi", vehicleType: "bus",
+          text: `Avtobus <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> yo'l bosishi uchun necha soat (t) vaqt ketadi?`,
+          target: t, v, t, s, unit: 'soat', label: 'Vaqtni toping (t):',
+          formula: 'Formula: t = S / v', calc: `t = ${s} : ${v} = ${t} soat`,
+          hint: `t = S / v = ${s} : ${v} = ${t} soat.`
+        };
+      },
+      () => {
+        const v = 50, t = 3, s = 150;
+        return {
+          cat: "Tezkor mototsikl kuryeri", vehicleType: "moto",
+          text: `Kuryer mototsiklda <b>${s} km</b> yo'lni <b>${t} soatda</b> yetib bordi. Kuryerning o'rtacha tezligi (v) qanday?`,
+          target: v, v, t, s, unit: 'km/soat', label: 'Tezlikni toping (v):',
+          formula: 'Formula: v = S / t', calc: `v = ${s} : ${t} = ${v} km/soat`,
+          hint: `v = S / t = ${s} : ${t} = ${v} km/soat.`
+        };
+      }
+    ];
+
+    const bankS1_Hard = [
+      () => {
+        const v = 80, t = 1.5, s = 120;
+        return {
+          cat: "Cobalt avtomobili (O'nli kasr)", vehicleType: "sedan", color: "#1d4ed8",
+          text: `Cobalt avtomobili <b>${v} km/soat</b> tezlik bilan <b>1.5 soat</b> (1 soat 30 daqiqa) harakatlandi. U bosib o'tgan masofa (S) qancha?`,
+          target: s, v, t, s, unit: 'km', label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t', calc: `S = ${v} · 1.5 = ${s} km`,
+          hint: `1.5 soat bilan ko'paytirish: S = ${v} · 1.5 = ${s} km.`
+        };
+      },
+      () => {
+        const v = 100, t = 1.5, s = 150;
+        return {
+          cat: "Tez yordam mashinasi (Ekspress)", vehicleType: "ambulance",
+          text: `Tez yordam mashinasi shoshilinch chaqiruv bo'yicha <b>${s} km</b> masofani <b>1.5 soatda</b> yetib bordi. Mashina tezligi (v) qanday?`,
+          target: v, v, t, s, unit: 'km/soat', label: 'Tezlikni toping (v):',
+          formula: 'Formula: v = S / t', calc: `v = ${s} : 1.5 = ${v} km/soat`,
+          hint: `v = ${s} : 1.5 = ${v} km/soat.`
+        };
+      },
+      () => {
+        const v = 80, t = 2.5, s = 200;
+        return {
+          cat: "Poyga sportkari", vehicleType: "sport", color: "#dc2626",
+          text: `Sportkar sinov yo'lida <b>${s} km</b> masofani <b>2.5 soatda</b> bosib o'tdi. Uning tezligini (v) aniqlang.`,
+          target: v, v, t, s, unit: 'km/soat', label: 'Tezlikni toping (v):',
+          formula: 'Formula: v = S / t', calc: `v = ${s} : 2.5 = ${v} km/soat`,
+          hint: `v = 200 : 2.5 = ${v} km/soat.`
+        };
+      },
+      () => {
+        const v = 50, t = 1.5, s = 75;
+        return {
+          cat: "Damas yo'nalishli taksi", vehicleType: "damas",
+          text: `Damas <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> masofani bosib o'tishi uchun necha soat (t) vaqt kerak?`,
+          target: t, v, t, s, unit: 'soat', label: 'Vaqtni toping (t):',
+          formula: 'Formula: t = S / v', calc: `t = ${s} : ${v} = ${t} soat`,
+          hint: `t = 75 : 50 = 1.5 soat (1 soat 30 daqiqa).`
+        };
+      }
+    ];
+
+    // --- SECTION 2 PROBLEMS: UCHRASHUV HARAKATI ---
+    const bankS2_Easy = [
+      () => ({
+        cat: "Velosipedchilar uchrashuvi",
+        text: `Ikki qishloq orasidagi masofa <b>60 km</b>. Bir tomondan <b>12 km/soat</b>, ikkinchi tomondan <b>18 km/soat</b> tezlikda ikki velosipedchi bir-biriga qarab yo'lga chiqdi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
+        v1: 12, v2: 18, s: 60, target: 2, unit: "soat",
+        v1Type: "bicycle", v2Type: "bicycle",
+        hint: `Yaqinlashish tezligi: 12 + 18 = 30 km/soat.<br>Uchrashuv vaqti: t = 60 : 30 = 2 soat.`
+      }),
+      () => ({
+        cat: "Traktor va Yuk mashinasi",
+        text: `Oraliq masofa <b>100 km</b>. Birinchi bekatdan traktor (<b>20 km/soat</b>), ikkinchisidan yuk mashinasi (<b>30 km/soat</b>) bir vaqtda yo'lga chiqdi. Ular necha soatda uchrashadi?`,
+        v1: 20, v2: 30, s: 100, target: 2, unit: "soat",
+        v1Type: "tractor", v2Type: "truck",
+        hint: `v_yaqinlashish = 20 + 30 = 50 km/soat.<br>t = 100 : 50 = 2 soat.`
+      }),
+      () => ({
+        cat: "Ikki shahar oralig'ida Damaslar",
+        text: `Masofa <b>120 km</b>. A shahardan <b>35 km/soat</b>, B shahardan <b>25 km/soat</b> tezlikdagi Damaslar bir-biriga qarab harakatlanmoqda. Uchrashuv qachon yuz beradi?`,
+        v1: 35, v2: 25, s: 120, target: 2, unit: "soat",
+        v1Type: "damas", v2Type: "damas",
+        hint: `Yaqinlashish tezligi: 35 + 25 = 60 km/soat.<br>t = 120 : 60 = 2 soat.`
+      })
+    ];
+
+    const bankS2_Medium = [
+      () => ({
+        cat: "Toshkent — Samarqand magistrali",
+        text: `Oraliq masofa <b>240 km</b>. Toshkentdan <b>50 km/soat</b> tezlikda yuk mashinasi, Samarqanddan <b>70 km/soat</b> tezlikda Cobalt bir-biriga qarab yo'lga chiqdi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
+        v1: 50, v2: 70, s: 240, target: 2, unit: "soat",
+        v1Type: "truck", v1Color: "#0284c7",
+        v2Type: "sedan", v2Color: "#2563eb",
+        hint: `Yaqinlashish tezligi: 50 + 70 = 120 km/soat.<br>Uchrashuv vaqti: t = 240 : 120 = 2 soat.`
+      }),
+      () => ({
+        cat: "Buxoro — Navoiy yo'li",
+        text: `Masofasi <b>200 km</b> bo'lgan shaharlardan bir vaqtda avtobus (<b>40 km/soat</b>) va YPX mashinasi (<b>60 km/soat</b>) yo'lga chiqdi. Ular necha soatdan keyin uchrashadi?`,
+        v1: 40, v2: 60, s: 200, target: 2, unit: "soat",
+        v1Type: "bus", v1Color: "#eab308",
+        v2Type: "police",
+        hint: `Yaqinlashish tezligi: 40 + 60 = 100 km/soat.<br>Vaqt: t = 200 : 100 = 2 soat.`
+      }),
+      () => ({
+        cat: "Farg'ona — Andijon yo'nalishi",
+        text: `Oraliq masofa <b>180 km</b>. Tezyurar poyezd (<b>50 km/soat</b>) va tez yordam mashinasi (<b>40 km/soat</b>) bir-biriga tomon yo'lga chiqdi. Uchrashuv vaqti qancha?`,
+        v1: 50, v2: 40, s: 180, target: 2, unit: "soat",
+        v1Type: "train",
+        v2Type: "ambulance",
+        hint: `Yaqinlashish tezligi: 50 + 40 = 90 km/soat.<br>Vaqt: t = 180 : 90 = 2 soat.`
+      })
+    ];
+
+    const bankS2_Hard = [
+      () => ({
+        cat: "Shoshilinch uchrashuv (1.5 soat)",
+        text: `Oraliq masofasi <b>150 km</b> bo'lgan ikkita shahardan bir-biriga qarab yuk mashinasi (<b>40 km/soat</b>) va tezkor sportkar (<b>60 km/soat</b>) yo'lga chiqdi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
+        v1: 40, v2: 60, s: 150, target: 1.5, unit: "soat",
+        v1Type: "truck",
+        v2Type: "sport",
+        hint: `Yaqinlashish tezligi: 40 + 60 = 100 km/soat.<br>Uchrashuv vaqti: t = 150 : 100 = 1.5 soat (1 soat 30 daqiqa).`
+      }),
+      () => ({
+        cat: "Katta magistral uchrashuvi (2.5 soat)",
+        text: `Masofa <b>250 km</b>. Bir tomondan avtobus (<b>45 km/soat</b>), ikkinchi tomondan Cobalt (<b>55 km/soat</b>) harakatlanmoqda. Uchrashuv necha soatda yuz beradi?`,
+        v1: 45, v2: 55, s: 250, target: 2.5, unit: "soat",
+        v1Type: "bus",
+        v2Type: "sedan",
+        hint: `v_umumiy = 45 + 55 = 100 km/soat.<br>t = 250 : 100 = 2.5 soat.`
+      })
+    ];
+
     function loadP1() {
-      const gen = problemPool1[Math.floor(Math.random() * problemPool1.length)];
+      let pool = bankS1_Easy;
+      if (currentDifficulty1 === 2) pool = bankS1_Medium;
+      if (currentDifficulty1 === 3) pool = bankS1_Hard;
+
+      const gen = pool[Math.floor(Math.random() * pool.length)];
       currentP1 = gen();
+
+      updateDifficultyUI(1, currentDifficulty1);
 
       document.getElementById('p1-number').innerText = p1Index;
       document.getElementById('p1-category').innerText = currentP1.cat;
@@ -1506,7 +1722,6 @@
       document.getElementById('p1-flag').style.left = flagPct + '%';
       document.getElementById('p1-dest-text').innerText = `B manzil (${currentP1.s} km)`;
 
-      // Reset
       resetCar('car1', 4);
       hideBanner('p1-result');
       document.getElementById('p1-check-btn').disabled = false;
@@ -1540,12 +1755,23 @@
 
         if (isCorrect) {
           playWinSound();
-          score1++;
+          score1 += currentDifficulty1 * 10;
           streak1++;
           document.getElementById('score1').innerText = score1;
           document.getElementById('streak1').innerText = streak1;
           resEl.className = 'result-alert success';
-          msgEl.innerHTML = `🎉 <b>Ofarin! Javob mutlaqo to'g'ri!</b><br>Yechim: ${currentP1.calc}. Transport manzilga aniq yetib keldi.`;
+
+          // Automatic progressive leveling up!
+          let levelUpNotice = '';
+          if (streak1 === 3 && currentDifficulty1 === 1) {
+            currentDifficulty1 = 2;
+            levelUpNotice = `<br>🌟 <b>Tabriklaymiz! O'rtacha qiyinlik darajasiga ko'tarildingiz!</b>`;
+          } else if (streak1 === 6 && currentDifficulty1 === 2) {
+            currentDifficulty1 = 3;
+            levelUpNotice = `<br>🏆 <b>Ofarin! Eng murakkab darajaga yetib keldingiz!</b>`;
+          }
+
+          msgEl.innerHTML = `🎉 <b>Ajoyib! Javob mutlaqo to'g'ri!</b><br>Yechim: ${currentP1.calc}. Transport belgilangan manzilga yetib keldi.${levelUpNotice}`;
           document.getElementById('p1-next-btn').style.display = 'inline-flex';
         } else {
           playErrorSound();
@@ -1555,7 +1781,7 @@
           let errText = travelled < currentP1.s
             ? 'Transport manzilga yetmadi (masofa kam bo\'ldi).'
             : 'Transport belgilangan manzildan o\'tib ketdi!';
-          msgEl.innerHTML = `❌ <b>Javob to'g'ri emas.</b> ${errText}<br>💡 ${currentP1.formula}. Qaytadan urinib ko'ring!`;
+          msgEl.innerHTML = `❌ <b>Javob to'g'ri emas.</b> ${errText}<br>💡 ${currentP1.formula}. Qaytadan hisoblab ko'ring!`;
           document.getElementById('p1-check-btn').disabled = false;
         }
       });
@@ -1577,50 +1803,17 @@
     }
 
     // ==========================================
-    // 2-BOSQICH: UCHRASHUV HARAKATI
+    // SECTION 2 FUNCTIONS
     // ==========================================
-    let score2 = 0, streak2 = 0, p2Index = 1;
-    let currentP2 = {};
-    const maxKm2 = 240;
-
-    const problemPool2 = [
-      () => ({
-        cat: "Toshkent — Samarqand yo'li",
-        text: `Oraliq masofa <b>240 km</b>. Toshkentdan <b>50 km/soat</b> tezlikda yuk mashinasi, Samarqanddan <b>70 km/soat</b> tezlikda yengil avtomobil bir-biriga qarab yo'lga chiqdi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
-        v1: 50, v2: 70, s: 240, target: 2, unit: "soat",
-        v1Type: "truck", v1Color: "#0284c7",
-        v2Type: "sport", v2Color: "#dc2626",
-        hint: `Yaqinlashish tezligi: 50 + 70 = 120 km/soat.<br>Uchrashuv vaqti: t = 240 : 120 = 2 soat.`
-      }),
-      () => ({
-        cat: "Buxoro — Navoiy qatnovi",
-        text: `Masofasi <b>200 km</b> bo'lgan ikkita shahardan bir vaqtda bir-biriga tomon avtobus (<b>40 km/soat</b>) va Cobalt (<b>60 km/soat</b>) harakatlana boshladi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
-        v1: 40, v2: 60, s: 200, target: 2, unit: "soat",
-        v1Type: "bus", v1Color: "#eab308",
-        v2Type: "sedan", v2Color: "#2563eb",
-        hint: `Yaqinlashish tezligi: 40 + 60 = 100 km/soat.<br>Vaqt: t = 200 : 100 = 2 soat.`
-      }),
-      () => ({
-        cat: "Farg'ona — Andijon yo'nalishi",
-        text: `Oraliq masofasi <b>180 km</b>. Bir tomondan tezyurar poyezd (<b>50 km/soat</b>), ikkinchi tomondan yuk mashinasi (<b>40 km/soat</b>) yo'lga chiqdi. Ular necha soatdan so'ng uchrashadi?`,
-        v1: 50, v2: 40, s: 180, target: 2, unit: "soat",
-        v1Type: "train", v1Color: "#0284c7",
-        v2Type: "truck", v2Color: "#475569",
-        hint: `Yaqinlashish tezligi: 50 + 40 = 90 km/soat.<br>Vaqt: t = 180 : 90 = 2 soat.`
-      }),
-      () => ({
-        cat: "Qarshi — Shahrisabz yo'li",
-        text: `Masofa <b>210 km</b>. Mototsikl kuryeri (<b>45 km/soat</b>) va yengil avtomobil (<b>60 km/soat</b>) bir-biriga qarab harakatlanmoqda. Uchrashuv qachon yuz beradi?`,
-        v1: 45, v2: 60, s: 210, target: 2, unit: "soat",
-        v1Type: "moto", v1Color: "#ea580c",
-        v2Type: "sedan", v2Color: "#059669",
-        hint: `Yaqinlashish tezligi: 45 + 60 = 105 km/soat.<br>Vaqt: t = 210 : 105 = 2 soat.`
-      })
-    ];
-
     function loadP2() {
-      const gen = problemPool2[Math.floor(Math.random() * problemPool2.length)];
+      let pool = bankS2_Easy;
+      if (currentDifficulty2 === 2) pool = bankS2_Medium;
+      if (currentDifficulty2 === 3) pool = bankS2_Hard;
+
+      const gen = pool[Math.floor(Math.random() * pool.length)];
       currentP2 = gen();
+
+      updateDifficultyUI(2, currentDifficulty2);
 
       document.getElementById('p2-number').innerText = p2Index;
       document.getElementById('p2-category').innerText = currentP2.cat;
@@ -1668,13 +1861,23 @@
 
         if (isCorrect) {
           playWinSound();
-          score2++;
+          score2 += currentDifficulty2 * 10;
           streak2++;
           document.getElementById('score2').innerText = score2;
           document.getElementById('streak2').innerText = streak2;
           resEl.className = 'result-alert success';
+
+          let levelUpNotice = '';
+          if (streak2 === 3 && currentDifficulty2 === 1) {
+            currentDifficulty2 = 2;
+            levelUpNotice = `<br>🌟 <b>Uchrashuv masalalarida o'rtacha darajaga ko'tarildingiz!</b>`;
+          } else if (streak2 === 6 && currentDifficulty2 === 2) {
+            currentDifficulty2 = 3;
+            levelUpNotice = `<br>🏆 <b>Ofarin! Murakkab uchrashuv masalalari darajasi!</b>`;
+          }
+
           const vSum = currentP2.v1 + currentP2.v2;
-          msgEl.innerHTML = `🎉 <b>To'g'ri topdingiz! Transportlar uchrashdi!</b><br>Yaqinlashish tezligi: ${currentP2.v1} + ${currentP2.v2} = ${vSum} km/soat.<br>Uchrashuv vaqti: ${currentP2.s} : ${vSum} = <b>${currentP2.target} soat</b>.`;
+          msgEl.innerHTML = `🎉 <b>Barakalla! Transportlar uchrashdi!</b><br>Yaqinlashish tezligi: ${currentP2.v1} + ${currentP2.v2} = ${vSum} km/soat.<br>Uchrashuv vaqti: ${currentP2.s} : ${vSum} = <b>${currentP2.target} soat</b>.${levelUpNotice}`;
           document.getElementById('p2-next-btn').style.display = 'inline-flex';
         } else {
           playErrorSound();
@@ -1699,7 +1902,7 @@
     }
 
     // ==========================================
-    // 3-BOSQICH: LABORATORIYA
+    // SECTION 3: LABORATORIYA
     // ==========================================
     function updateLab() {
       const v = parseInt(document.getElementById('lab-v-range').value);
@@ -1714,7 +1917,6 @@
       document.getElementById('lab-s-val').innerText = s + ' km';
       document.getElementById('car3-label').innerText = v + ' km/h';
 
-      // Hour step flags
       const cont = document.getElementById('hour-markers-container');
       cont.innerHTML = '';
       for (let h = 1; h <= t; h++) {
@@ -1769,7 +1971,6 @@
 
     function animateCarForward(carId, startPct, endPct, durationMs, onDone) {
       const car = document.getElementById(carId);
-      // Moving right -> wheels spin forward (clockwise)
       car.classList.add('is-moving-forward');
       const startTime = performance.now();
 
@@ -1796,7 +1997,6 @@
       const carL = document.getElementById(carLeftId);
       const carR = document.getElementById(carRightId);
 
-      // Left car moves right (forward), right car moves left (facing left, forward spin in its coordinate)
       carL.classList.add('is-moving-forward');
       carR.classList.add('is-moving-forward');
       const startTime = performance.now();
@@ -1829,9 +2029,7 @@
     // INITIALIZATION
     // ==========================================
     window.onload = function() {
-      // Lab vehicle setup (Concept electric car)
       document.getElementById('car3-svg-wrap').innerHTML = getVehicleSvg('sport', true, '#8b5cf6');
-
       renderRuler('ruler1', 240, 40);
       loadP1();
       loadP2();
