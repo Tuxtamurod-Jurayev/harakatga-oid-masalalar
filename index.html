@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harakatga doir masalalar | Didaktik o'yin</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --bg: #f0fdf4;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --road-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 15px;
+      width: 100%;
+      max-width: 950px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      color: #0f172a;
+      font-weight: 800;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 4px;
+    }
+
+    /* Navigation tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 12px;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+      width: 100%;
+      max-width: 950px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      border: none;
+      background: transparent;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      background: #f1f5f9;
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Main Container */
+    .main-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 950px;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* Problem box */
+    .problem-box {
+      background: #eff6ff;
+      border-left: 6px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .problem-badge {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .problem-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    .formula-tag {
+      display: inline-block;
+      margin-top: 8px;
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      font-size: 0.95rem;
+    }
+
+    /* Road and Animation Area */
+    .canvas-container {
+      background: linear-gradient(to bottom, #7dd3fc 0%, #bae6fd 60%, #86efac 60%, #4ade80 100%);
+      border-radius: 16px;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #cbd5e1;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    /* Scenery */
+    .city-label {
+      position: absolute;
+      top: 15px;
+      font-size: 1rem;
+      font-weight: 800;
+      background: rgba(255,255,255,0.95);
+      padding: 6px 14px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .city-left { left: 20px; color: #1e40af; border-left: 4px solid #2563eb; }
+    .city-right { right: 20px; color: #991b1b; border-right: 4px solid #dc2626; }
+
+    /* The Road */
+    .road {
+      position: absolute;
+      bottom: 42px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: var(--road-color);
+      display: flex;
+      align-items: center;
+    }
+
+    .road-line {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, #ffffff, #ffffff 25px, transparent 25px, transparent 50px);
+    }
+
+    /* Vehicles */
+    .vehicle {
+      position: absolute;
+      bottom: 48px;
+      width: 65px;
+      height: 42px;
+      z-index: 10;
+      transition: transform 0.05s linear;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+    }
+
+    .vehicle-label {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.85);
+      color: white;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Ruler / Distance Scale */
+    .ruler-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 42px;
+      background: #f8fafc;
+      border-top: 2px solid #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #475569;
+    }
+
+    .ruler-tick {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .ruler-tick::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      width: 2px;
+      height: 12px;
+      background: #64748b;
+    }
+
+    /* Interactive controls */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafc;
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+    }
+
+    .input-group label {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #334155;
+    }
+
+    .input-field {
+      width: 120px;
+      padding: 10px 14px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      text-align: center;
+      outline: none;
+      transition: all 0.2s;
+      background: white;
+      color: #0f172a;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .unit-text {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      padding: 14px 28px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+      box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+    }
+    .btn-success:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    /* Result feedback banner */
+    .result-banner {
+      display: none;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-top: 15px;
+      animation: popIn 0.3s ease;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .result-banner.success {
+      display: flex;
+      background: #dcfce7;
+      color: #14532d;
+      border: 2px solid #86efac;
+    }
+
+    .result-banner.error {
+      display: flex;
+      background: #fee2e2;
+      color: #7f1d1d;
+      border: 2px solid #fca5a5;
+    }
+
+    /* Section 3: Laboratory sliders */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .slider-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .slider-title {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #1e293b;
+    }
+
+    .slider-val {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .custom-range {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: #cbd5e1;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .formula-display {
+      background: #eff6ff;
+      border: 2px dashed #93c5fd;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 15px;
+    }
+
+    .formula-display span {
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: white;
+      margin: 0 4px;
+    }
+
+    /* Step markers on road */
+    .hour-marker {
+      position: absolute;
+      bottom: 104px;
+      transform: translateX(-50%);
+      background: #fef08a;
+      border: 2px solid #ca8a04;
+      color: #713f12;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 6px;
+      white-space: nowrap;
+      z-index: 8;
+      animation: popIn 0.3s ease;
+    }
+    .hour-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px 5px 0 5px;
+      border-style: solid;
+      border-color: #ca8a04 transparent transparent transparent;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Flags & decorations */
+    .flag {
+      position: absolute;
+      bottom: 102px;
+      font-size: 1.8rem;
+      z-index: 6;
+    }
+
+    /* Sound Toggle */
+    .sound-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #f1f5f9;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: #475569;
+    }
+    .sound-btn:hover { background: #e2e8f0; }
+
+    /* Score counter */
+    .score-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fef9c3;
+      border: 2px solid #fde047;
+      color: #854d0e;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.6rem; }
+      .problem-text { font-size: 1.15rem; }
+      .canvas-container { height: 190px; }
+      .input-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="badge">Matematika va uni o'qitish metodikasi</div>
+    <h1>Harakatga doir masalalar</h1>
+    <p class="subtitle">Interaktiv didaktik o'yin va ko'rgazmali simulyator</p>
+  </header>
+
+  <!-- Navigation tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" id="tab1" onclick="switchTab(1)">
+      🚗 1. Oddiy harakat (S = v · t)
+    </button>
+    <button class="tab-btn" id="tab2" onclick="switchTab(2)">
+      🚙 ⇄ 🚗 2. Uchrashuv harakati
+    </button>
+    <button class="tab-btn" id="tab3" onclick="switchTab(3)">
+      🛠️ 3. O'qituvchi laboratoriyasi
+    </button>
+  </div>
+
+  <!-- Main Work Area -->
+  <div class="main-card">
+    <button class="sound-btn" id="soundBtn" onclick="toggleSound()">
+      <span id="soundIcon">🔊</span> Ovoz
+    </button>
+
+    <!-- SECTION 1: ODDIY HARAKAT -->
+    <div id="section1">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span style="font-weight: 800; color: #475569;">1-BOSQICH: Bitta mashina harakati</span>
+        <div class="score-box">⭐ To'g'ri javoblar: <span id="score1">0</span></div>
+      </div>
+
+      <div class="problem-box">
+        <div class="problem-badge">Masala</div>
+        <div class="problem-text" id="p1-text">Yuklanmoqda...</div>
+        <div class="formula-tag" id="p1-formula-hint">Formula: S = v · t</div>
+      </div>
+
+      <!-- Live Canvas -->
+      <div class="canvas-container" id="canvas1">
+        <div class="city-label city-left">🏡 A qishloq (0 km)</div>
+        <div class="city-label city-right" id="p1-dest-label">🏫 B shahar</div>
+        <div class="flag" id="p1-flag" style="left: 88%;">🏁</div>
+
+        <div class="road">
+          <div class="road-line"></div>
+        </div>
+
+        <!-- Single Car SVG -->
+        <div class="vehicle" id="car1" style="left: 20px;">
+          <div class="vehicle-label" id="car1-label">60 km/h</div>
+          <svg viewBox="0 0 100 60" width="100%" height="100%">
+            <!-- Blue Car body -->
+            <path d="M10,40 Q15,22 30,22 L45,22 L65,22 Q78,22 88,32 L95,40 Q98,43 95,48 L10,48 Q6,48 6,43 Z" fill="#2563eb" />
+            <path d="M30,24 L45,24 L45,36 L20,36 Q23,28 30,24 Z" fill="#93c5fd" />
+            <path d="M50,24 L65,24 Q72,24 78,32 L78,36 L50,36 Z" fill="#93c5fd" />
+            <!-- Wheels -->
+            <circle cx="28" cy="48" r="10" fill="#1e293b" />
+            <circle cx="28" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="76" cy="48" r="10" fill="#1e293b" />
+            <circle cx="76" cy="48" r="4" fill="#94a3b8" />
+            <!-- Lights -->
+            <circle cx="94" cy="42" r="3" fill="#fef08a" />
+          </svg>
+        </div>
+
+        <!-- Scale ruler -->
+        <div class="ruler-bar" id="ruler1">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-panel">
+        <div class="input-row">
+          <div class="input-group">
+            <label id="p1-input-label" for="p1-answer">Javobingiz:</label>
+            <input type="number" id="p1-answer" class="input-field" placeholder="?">
+            <span class="unit-text" id="p1-unit">km</span>
+          </div>
+          <button class="btn btn-primary" id="p1-check-btn" onclick="checkP1()">
+            🚀 Tekshirish va Harakatlantirish
+          </button>
+        </div>
+
+        <div class="result-banner" id="p1-result">
+          <div id="p1-msg">Natija</div>
+          <button class="btn btn-success" id="p1-next-btn" style="display:none;" onclick="nextP1()">
+            Keyingi masala ➔
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: UCHRASHUV HARAKATI -->
+    <div id="section2" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span style="font-weight: 800; color: #475569;">2-BOSQICH: Bir-biriga qarab harakat (Uchrashuv)</span>
+        <div class="score-box">⭐ To'g'ri javoblar: <span id="score2">0</span></div>
+      </div>
+
+      <div class="problem-box">
+        <div class="problem-badge">Uchrashuv masalasi</div>
+        <div class="problem-text" id="p2-text">Yuklanmoqda...</div>
+        <div class="formula-tag">Yaqinlashish tezligi: v = v₁ + v₂ &nbsp;|&nbsp; t = S / (v₁ + v₂)</div>
+      </div>
+
+      <!-- 2 Cars Canvas -->
+      <div class="canvas-container" id="canvas2">
+        <div class="city-label city-left">🏛️ A shahar (0 km)</div>
+        <div class="city-label city-right">🏰 B shahar (240 km)</div>
+
+        <div class="road">
+          <div class="road-line"></div>
+        </div>
+
+        <!-- Blue Car (from Left) -->
+        <div class="vehicle" id="car2-left" style="left: 20px;">
+          <div class="vehicle-label" id="car2-left-label">50 km/h</div>
+          <svg viewBox="0 0 100 60" width="100%" height="100%">
+            <path d="M10,40 Q15,22 30,22 L45,22 L65,22 Q78,22 88,32 L95,40 Q98,43 95,48 L10,48 Q6,48 6,43 Z" fill="#2563eb" />
+            <path d="M30,24 L45,24 L45,36 L20,36 Q23,28 30,24 Z" fill="#93c5fd" />
+            <path d="M50,24 L65,24 Q72,24 78,32 L78,36 L50,36 Z" fill="#93c5fd" />
+            <circle cx="28" cy="48" r="10" fill="#1e293b" /><circle cx="28" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="76" cy="48" r="10" fill="#1e293b" /><circle cx="76" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="94" cy="42" r="3" fill="#fef08a" />
+          </svg>
+        </div>
+
+        <!-- Red Car (from Right, facing left) -->
+        <div class="vehicle" id="car2-right" style="right: 20px; transform: scaleX(-1);">
+          <div class="vehicle-label" id="car2-right-label" style="transform: scaleX(-1) translateX(50%);">70 km/h</div>
+          <svg viewBox="0 0 100 60" width="100%" height="100%">
+            <path d="M10,40 Q15,22 30,22 L45,22 L65,22 Q78,22 88,32 L95,40 Q98,43 95,48 L10,48 Q6,48 6,43 Z" fill="#dc2626" />
+            <path d="M30,24 L45,24 L45,36 L20,36 Q23,28 30,24 Z" fill="#fca5a5" />
+            <path d="M50,24 L65,24 Q72,24 78,32 L78,36 L50,36 Z" fill="#fca5a5" />
+            <circle cx="28" cy="48" r="10" fill="#1e293b" /><circle cx="28" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="76" cy="48" r="10" fill="#1e293b" /><circle cx="76" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="94" cy="42" r="3" fill="#fef08a" />
+          </svg>
+        </div>
+
+        <!-- Ruler for 2 cars -->
+        <div class="ruler-bar" id="ruler2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Controls 2 -->
+      <div class="controls-panel">
+        <div class="input-row">
+          <div class="input-group">
+            <label for="p2-answer">Necha soatdan keyin uchrashadi?</label>
+            <input type="number" id="p2-answer" class="input-field" placeholder="?">
+            <span class="unit-text">soat</span>
+          </div>
+          <button class="btn btn-primary" id="p2-check-btn" onclick="checkP2()">
+            🤝 Boshlash va Uchrashish
+          </button>
+        </div>
+
+        <div class="result-banner" id="p2-result">
+          <div id="p2-msg">Natija</div>
+          <button class="btn btn-success" id="p2-next-btn" style="display:none;" onclick="nextP2()">
+            Keyingi masala ➔
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: LABORATORIYA / O'QITUVCHI REJIMI -->
+    <div id="section3" style="display: none;">
+      <div class="problem-box" style="border-left-color: #8b5cf6; background: #f5f3ff;">
+        <div class="problem-badge" style="color: #7c3aed;">Metodik Ko'rgazma</div>
+        <div class="problem-text">Tezlik va Vaqtni o'zgartiring va masofani jonli kuzating!</div>
+        <p style="margin-top: 5px; color: #64748b; font-weight: 600;">
+          O'qituvchi doskada slayderlarni surib, harakat qonuniyatini bosqichma-bosqich ko'rsatib berishi mumkin.
+        </p>
+      </div>
+
+      <!-- Formula dynamic view -->
+      <div class="formula-display">
+        Masofa: <span id="lab-s-val">120 km</span> = Tezlik: <span id="lab-v-disp">60 km/h</span> × Vaqt: <span id="lab-t-disp">2 soat</span>
+      </div>
+
+      <!-- Sliders -->
+      <div class="lab-grid">
+        <div class="slider-card">
+          <div class="slider-title">
+            <span>Tezlik (v)</span>
+            <span class="slider-val" id="lab-v-val">60 km/h</span>
+          </div>
+          <input type="range" class="custom-range" id="lab-v-range" min="10" max="100" step="5" value="60" oninput="updateLab()">
+        </div>
+
+        <div class="slider-card">
+          <div class="slider-title">
+            <span>Harakat vaqti (t)</span>
+            <span class="slider-val" id="lab-t-val">2 soat</span>
+          </div>
+          <input type="range" class="custom-range" id="lab-t-range" min="1" max="5" step="1" value="2" oninput="updateLab()">
+        </div>
+      </div>
+
+      <!-- Live Simulation Canvas -->
+      <div class="canvas-container" id="canvas3">
+        <div class="city-label city-left">Boshlang'ich (0 km)</div>
+        <div class="city-label city-right">Marragacha: 300 km</div>
+
+        <div class="road">
+          <div class="road-line"></div>
+        </div>
+
+        <!-- Lab Vehicle -->
+        <div class="vehicle" id="car3" style="left: 20px;">
+          <div class="vehicle-label" id="car3-label">60 km/h</div>
+          <svg viewBox="0 0 100 60" width="100%" height="100%">
+            <path d="M10,40 Q15,22 30,22 L45,22 L65,22 Q78,22 88,32 L95,40 Q98,43 95,48 L10,48 Q6,48 6,43 Z" fill="#8b5cf6" />
+            <path d="M30,24 L45,24 L45,36 L20,36 Q23,28 30,24 Z" fill="#ddd6fe" />
+            <path d="M50,24 L65,24 Q72,24 78,32 L78,36 L50,36 Z" fill="#ddd6fe" />
+            <circle cx="28" cy="48" r="10" fill="#1e293b" /><circle cx="28" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="76" cy="48" r="10" fill="#1e293b" /><circle cx="76" cy="48" r="4" fill="#94a3b8" />
+            <circle cx="94" cy="42" r="3" fill="#fef08a" />
+          </svg>
+        </div>
+
+        <div id="hour-markers-container"></div>
+
+        <!-- Scale ruler 3 -->
+        <div class="ruler-bar" id="ruler3"></div>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="btn btn-primary" onclick="animateLab()">
+          ▶️ Harakatni bosqichma-bosqich ko'rsatish
+        </button>
+        <button class="btn btn-secondary" onclick="resetLab()" style="margin-left: 10px;">
+          🔄 Qayta tiklash
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- AUDIO SYNTHESIS (Zero external assets needed) ---
+    let soundEnabled = true;
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) audioCtx = new AudioContext();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundIcon').innerText = soundEnabled ? '🔊' : '🔇';
+      document.getElementById('soundBtn').style.opacity = soundEnabled ? '1' : '0.6';
+    }
+
+    function playBeep(freq = 440, duration = 0.15, type = 'sine') {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playWinSound() {
+      if (!soundEnabled) return;
+      const notes = [261.63, 329.63, 392.00, 523.25]; // C, E, G, C
+      notes.forEach((freq, idx) => {
+        setTimeout(() => playBeep(freq, 0.2, 'triangle'), idx * 120);
+      });
+    }
+
+    function playErrorSound() {
+      if (!soundEnabled) return;
+      playBeep(200, 0.2, 'sawtooth');
+      setTimeout(() => playBeep(160, 0.3, 'sawtooth'), 180);
+    }
+
+    // --- TAB SWITCHING ---
+    function switchTab(tabIndex) {
+      document.querySelectorAll('.tab-btn').forEach((b, i) => {
+        b.classList.toggle('active', i + 1 === tabIndex);
+      });
+      document.getElementById('section1').style.display = tabIndex === 1 ? 'block' : 'none';
+      document.getElementById('section2').style.display = tabIndex === 2 ? 'block' : 'none';
+      document.getElementById('section3').style.display = tabIndex === 3 ? 'block' : 'none';
+      playBeep(520, 0.08);
+
+      if (tabIndex === 1) renderRuler('ruler1', 240, 40);
+      if (tabIndex === 2) renderRuler('ruler2', 240, 40);
+      if (tabIndex === 3) {
+        renderRuler('ruler3', 300, 50);
+        updateLab();
+      }
+    }
+
+    function renderRuler(rulerId, maxKm, stepKm) {
+      const el = document.getElementById(rulerId);
+      el.innerHTML = '';
+      for (let km = 0; km <= maxKm; km += stepKm) {
+        const tick = document.createElement('div');
+        tick.className = 'ruler-tick';
+        tick.innerText = km + ' km';
+        el.appendChild(tick);
+      }
+    }
+
+    // ==========================================
+    // 1-BOSQICH: ODDIY HARAKAT (MASALA GENERATORI)
+    // ==========================================
+    let score1 = 0;
+    let currentP1 = {};
+    const maxRoadKm1 = 240;
+
+    const p1Types = [
+      {
+        type: 'S', // find Distance
+        generate: () => {
+          const v = [30, 40, 50, 60, 70, 80][Math.floor(Math.random() * 6)];
+          const t = [2, 3, 4][Math.floor(Math.random() * 3)];
+          const s = v * t;
+          return {
+            text: `Mashina <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> harakatlandi. U qancha masofani (S) bosib o'tadi?`,
+            v: v, t: t, s: s, target: s,
+            formula: 'Formula: S = v · t',
+            unit: 'km', label: 'Masofani toping (S):',
+            calc: `Hisoblash: S = ${v} · ${t} = ${s} km.`
+          };
+        }
+      },
+      {
+        type: 'v', // find Speed
+        generate: () => {
+          const t = [2, 3, 4][Math.floor(Math.random() * 3)];
+          const v = [40, 50, 60, 70][Math.floor(Math.random() * 4)];
+          const s = v * t;
+          return {
+            text: `Mashina <b>${s} km</b> masofani <b>${t} soatda</b> bosib o'tdi. Mashinaning tezligi (v) qanday?`,
+            v: v, t: t, s: s, target: v,
+            formula: 'Formula: v = S / t',
+            unit: 'km/soat', label: 'Tezlikni toping (v):',
+            calc: `Hisoblash: v = ${s} : ${t} = ${v} km/soat.`
+          };
+        }
+      },
+      {
+        type: 't', // find Time
+        generate: () => {
+          const v = [40, 50, 60, 80][Math.floor(Math.random() * 4)];
+          const t = [2, 3, 4][Math.floor(Math.random() * 3)];
+          const s = v * t;
+          return {
+            text: `Mashina <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> masofani bosib o'tishi uchun necha soat (t) kerak?`,
+            v: v, t: t, s: s, target: t,
+            formula: 'Formula: t = S / v',
+            unit: 'soat', label: 'Vaqtni toping (t):',
+            calc: `Hisoblash: t = ${s} : ${v} = ${t} soat.`
+          };
+        }
+      }
+    ];
+
+    function loadP1() {
+      const typeObj = p1Types[Math.floor(Math.random() * p1Types.length)];
+      currentP1 = typeObj.generate();
+
+      document.getElementById('p1-text').innerHTML = currentP1.text;
+      document.getElementById('p1-formula-hint').innerText = currentP1.formula;
+      document.getElementById('p1-unit').innerText = currentP1.unit;
+      document.getElementById('p1-input-label').innerText = currentP1.label;
+      document.getElementById('p1-answer').value = '';
+      document.getElementById('car1-label').innerText = currentP1.v + ' km/h';
+
+      // Position finish flag according to problem's destination distance (S)
+      const flagLeftPct = 4 + (currentP1.s / maxRoadKm1) * 88;
+      document.getElementById('p1-flag').style.left = flagLeftPct + '%';
+      document.getElementById('p1-dest-label').innerText = `🏫 B shahar (${currentP1.s} km)`;
+
+      // Reset car
+      resetCar('car1', 4);
+      hideResult('p1-result');
+      document.getElementById('p1-check-btn').disabled = false;
+      document.getElementById('p1-next-btn').style.display = 'none';
+    }
+
+    function checkP1() {
+      const input = parseFloat(document.getElementById('p1-answer').value);
+      if (isNaN(input)) {
+        alert('Iltimos, javobni kiriting!');
+        return;
+      }
+
+      document.getElementById('p1-check-btn').disabled = true;
+      const isCorrect = Math.abs(input - currentP1.target) < 0.1;
+
+      // Animate the car
+      // Calculate where the car will end up based on user's answer
+      let actualTravelledS = currentP1.s;
+      if (!isCorrect) {
+        if (currentP1.target === currentP1.s) {
+          actualTravelledS = input;
+        } else if (currentP1.target === currentP1.v) {
+          actualTravelledS = input * currentP1.t;
+        } else {
+          actualTravelledS = currentP1.v * input;
+        }
+      }
+
+      const clampedS = Math.max(0, Math.min(maxRoadKm1, actualTravelledS));
+      const endPct = 4 + (clampedS / maxRoadKm1) * 88;
+
+      animateCar('car1', 4, endPct, 1200, () => {
+        const resEl = document.getElementById('p1-result');
+        const msgEl = document.getElementById('p1-msg');
+        resEl.style.display = 'flex';
+
+        if (isCorrect) {
+          playWinSound();
+          score1++;
+          document.getElementById('score1').innerText = score1;
+          resEl.className = 'result-banner success';
+          msgEl.innerHTML = `🎉 <b>Barakalla! To'g'ri topdingiz!</b><br>${currentP1.calc} Mashina manzilga yetib keldi.`;
+          document.getElementById('p1-next-btn').style.display = 'inline-block';
+        } else {
+          playErrorSound();
+          resEl.className = 'result-banner error';
+          let errDetail = actualTravelledS < currentP1.s
+            ? 'Mashina manzilga yetib bormadi (masofa kam bo\'ldi).'
+            : 'Mashina manzildan o\'tib ketdi!';
+          msgEl.innerHTML = `❌ <b>Noto'g'ri.</b> ${errDetail}<br>💡 ${currentP1.formula}. Qayta hisoblab ko'ring!`;
+          document.getElementById('p1-check-btn').disabled = false;
+        }
+      });
+    }
+
+    function nextP1() {
+      loadP1();
+    }
+
+    // ==========================================
+    // 2-BOSQICH: UCHRASHUV HARAKATI
+    // ==========================================
+    let score2 = 0;
+    let currentP2 = {};
+    const maxRoadKm2 = 240;
+
+    function loadP2() {
+      // Pick numbers that divide cleanly
+      const datasets = [
+        { v1: 50, v2: 70, s: 240, t: 2 },
+        { v1: 40, v2: 60, s: 200, t: 2 },
+        { v1: 30, v2: 50, s: 240, t: 3 },
+        { v1: 60, v2: 40, s: 200, t: 2 },
+        { v1: 45, v2: 35, s: 240, t: 3 }
+      ];
+      currentP2 = datasets[Math.floor(Math.random() * datasets.length)];
+
+      document.getElementById('p2-text').innerHTML =
+        `Ikki shahar orasidagi masofa <b>${currentP2.s} km</b>.<br>` +
+        `Birinchi ko'k mashina tezligi <b>${currentP2.v1} km/soat</b>, ikkinchi qizil mashina tezligi <b>${currentP2.v2} km/soat</b>.<br>` +
+        `Agar ular bir-biriga qarab bir vaqtda yo'lga chiqsa, <b>necha soatdan keyin</b> uchrashadi?`;
+
+      document.getElementById('car2-left-label').innerText = currentP2.v1 + ' km/h';
+      document.getElementById('car2-right-label').innerText = currentP2.v2 + ' km/h';
+      document.getElementById('p2-answer').value = '';
+
+      resetCar('car2-left', 4);
+      resetCar('car2-right', 4, true);
+      hideResult('p2-result');
+      document.getElementById('p2-check-btn').disabled = false;
+      document.getElementById('p2-next-btn').style.display = 'none';
+    }
+
+    function checkP2() {
+      const input = parseFloat(document.getElementById('p2-answer').value);
+      if (isNaN(input)) {
+        alert('Iltimos, soat miqdorini kiriting!');
+        return;
+      }
+
+      document.getElementById('p2-check-btn').disabled = true;
+      const isCorrect = Math.abs(input - currentP2.t) < 0.1;
+
+      // Animate meeting
+      // S1 = v1 * t, S2 = v2 * t
+      const simT = isCorrect ? currentP2.t : Math.min(input, 3.5);
+      const s1 = currentP2.v1 * simT;
+      const s2 = currentP2.v2 * simT;
+
+      const leftPct = 4 + (Math.min(s1, currentP2.s) / maxRoadKm2) * 88;
+      const rightPct = 4 + (Math.min(s2, currentP2.s) / maxRoadKm2) * 88;
+
+      animateCarMeeting('car2-left', 'car2-right', 4, leftPct, 4, rightPct, 1500, () => {
+        const resEl = document.getElementById('p2-result');
+        const msgEl = document.getElementById('p2-msg');
+        resEl.style.display = 'flex';
+
+        if (isCorrect) {
+          playWinSound();
+          score2++;
+          document.getElementById('score2').innerText = score2;
+          resEl.className = 'result-banner success';
+          msgEl.innerHTML =
+            `🎉 <b>Ajoyib! Mashinalar uchrashdi!</b><br>` +
+            `Yaqinlashish tezligi: ${currentP2.v1} + ${currentP2.v2} = ${currentP2.v1 + currentP2.v2} km/soat.<br>` +
+            `Uchrashuv vaqti: t = ${currentP2.s} : ${currentP2.v1 + currentP2.v2} = <b>${currentP2.t} soat</b>.`;
+          document.getElementById('p2-next-btn').style.display = 'inline-block';
+        } else {
+          playErrorSound();
+          resEl.className = 'result-banner error';
+          msgEl.innerHTML =
+            `❌ <b>Noto'g'ri.</b><br>` +
+            `Yodda tuting: Ular bir-biriga qarab harakatlanganda tezliklar qo'shiladi: v = v₁ + v₂.<br>` +
+            `So'ng umumiy masofani shu umumiy tezlikka bo'lish kerak. Qayta hisoblang!`;
+          document.getElementById('p2-check-btn').disabled = false;
+        }
+      });
+    }
+
+    function nextP2() {
+      loadP2();
+    }
+
+    // ==========================================
+    // 3-BOSQICH: O'QITUVCHI LABORATORIYASI
+    // ==========================================
+    function updateLab() {
+      const v = parseInt(document.getElementById('lab-v-range').value);
+      const t = parseInt(document.getElementById('lab-t-range').value);
+      const s = v * t;
+
+      document.getElementById('lab-v-val').innerText = v + ' km/h';
+      document.getElementById('lab-t-val').innerText = t + ' soat';
+
+      document.getElementById('lab-v-disp').innerText = v + ' km/h';
+      document.getElementById('lab-t-disp').innerText = t + ' soat';
+      document.getElementById('lab-s-val').innerText = s + ' km';
+      document.getElementById('car3-label').innerText = v + ' km/h';
+
+      // Render step indicators
+      const cont = document.getElementById('hour-markers-container');
+      cont.innerHTML = '';
+      for (let h = 1; h <= t; h++) {
+        const dist = v * h;
+        const pct = 4 + (Math.min(dist, 300) / 300) * 88;
+        const marker = document.createElement('div');
+        marker.className = 'hour-marker';
+        marker.style.left = pct + '%';
+        marker.innerHTML = `${h}-soat: <b>${dist} km</b>`;
+        cont.appendChild(marker);
+      }
+    }
+
+    function animateLab() {
+      const v = parseInt(document.getElementById('lab-v-range').value);
+      const t = parseInt(document.getElementById('lab-t-range').value);
+      const s = v * t;
+      const targetPct = 4 + (Math.min(s, 300) / 300) * 88;
+
+      playBeep(350, 0.1);
+      resetCar('car3', 4);
+      setTimeout(() => {
+        animateCar('car3', 4, targetPct, 1600, () => {
+          playWinSound();
+        });
+      }, 100);
+    }
+
+    function resetLab() {
+      resetCar('car3', 4);
+      updateLab();
+    }
+
+    // ==========================================
+    // ANIMATSIYA YORDAMCHI FUNKSIYALARI
+    // ==========================================
+    function resetCar(carId, defaultPct, fromRight = false) {
+      const car = document.getElementById(carId);
+      if (fromRight) {
+        car.style.right = defaultPct + '%';
+        car.style.left = 'auto';
+      } else {
+        car.style.left = defaultPct + '%';
+        car.style.right = 'auto';
+      }
+    }
+
+    function hideResult(resultId) {
+      document.getElementById(resultId).style.display = 'none';
+    }
+
+    function animateCar(carId, startPct, endPct, durationMs, onDone) {
+      const car = document.getElementById(carId);
+      const startTime = performance.now();
+
+      playBeep(280, durationMs / 1000, 'sawtooth');
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / durationMs);
+        // Easing out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const currentPct = startPct + (endPct - startPct) * ease;
+        car.style.left = currentPct + '%';
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          if (onDone) onDone();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function animateCarMeeting(carLeftId, carRightId, startLeft, endLeft, startRight, endRight, durationMs, onDone) {
+      const carL = document.getElementById(carLeftId);
+      const carR = document.getElementById(carRightId);
+      const startTime = performance.now();
+
+      playBeep(260, durationMs / 1000, 'sawtooth');
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / durationMs);
+        const ease = 1 - Math.pow(1 - progress, 2);
+
+        const curLeft = startLeft + (endLeft - startLeft) * ease;
+        const curRight = startRight + (endRight - startRight) * ease;
+
+        carL.style.left = curLeft + '%';
+        carR.style.right = curRight + '%';
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          if (onDone) onDone();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // --- INITIALIZE ON LOAD ---
+    window.onload = function() {
+      renderRuler('ruler1', 240, 40);
+      loadP1();
+      loadP2();
+    };
+  </script>
+</body>
+</html>
