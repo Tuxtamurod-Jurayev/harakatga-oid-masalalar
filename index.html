@@ -6,21 +6,18 @@
   <title>Harakatga doir masalalar | Zamonaviy Didaktik O'yin</title>
   <style>
     :root {
-      --primary: #3b82f6;
+      --primary: #2563eb;
       --primary-dark: #1d4ed8;
       --primary-light: #eff6ff;
       --success: #10b981;
-      --success-dark: #047857;
       --warning: #f59e0b;
       --danger: #ef4444;
       --surface: #ffffff;
-      --surface-glass: rgba(255, 255, 255, 0.88);
-      --bg: #f8fafc;
+      --surface-glass: rgba(255, 255, 255, 0.92);
       --text-main: #0f172a;
       --text-muted: #64748b;
-      --road: #1e293b;
       --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
-      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
       --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.15);
     }
 
@@ -28,7 +25,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       user-select: none;
     }
 
@@ -39,13 +36,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 14px 40px;
+      padding: 16px 12px 40px;
     }
 
     /* HEADER */
     header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       max-width: 980px;
       width: 100%;
       position: relative;
@@ -57,41 +54,33 @@
       gap: 6px;
       background: linear-gradient(135deg, #dbeafe, #e0e7ff);
       color: #1e40af;
-      padding: 6px 16px;
+      padding: 5px 16px;
       border-radius: 9999px;
       font-size: 0.88rem;
       font-weight: 700;
-      letter-spacing: 0.4px;
       border: 1px solid #bfdbfe;
       box-shadow: var(--shadow-sm);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     h1 {
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 900;
       color: #0f172a;
       letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
     }
 
     .subtitle {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-top: 5px;
+      font-size: 1.05rem;
+      margin-top: 4px;
       font-weight: 500;
     }
 
-    /* TOP ACTION BAR */
     .top-actions {
       position: absolute;
       top: 0;
       right: 0;
-      display: flex;
-      gap: 8px;
     }
 
     .icon-btn {
@@ -113,7 +102,6 @@
     .icon-btn:hover {
       background: white;
       transform: translateY(-1px);
-      border-color: #94a3b8;
     }
 
     /* TABS */
@@ -125,7 +113,7 @@
       padding: 8px;
       border-radius: 18px;
       box-shadow: var(--shadow-md);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       width: 100%;
       max-width: 980px;
       border: 1px solid rgba(255, 255, 255, 0.7);
@@ -145,20 +133,16 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s ease;
     }
     .tab-btn svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       stroke-width: 2.2;
-      transition: transform 0.2s ease;
     }
     .tab-btn:hover {
       background: #f1f5f9;
       color: var(--primary);
-    }
-    .tab-btn:hover svg {
-      transform: scale(1.1);
     }
     .tab-btn.active {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -176,17 +160,17 @@
       box-shadow: var(--shadow-lg);
       width: 100%;
       max-width: 980px;
-      padding: 26px;
+      padding: 24px;
       position: relative;
       border: 1px solid #e2e8f0;
     }
 
-    /* SECTION STATUS BAR */
+    /* HEADER OF SECTION */
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
       gap: 12px;
     }
@@ -230,10 +214,9 @@
     .problem-box {
       background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
       border-left: 6px solid var(--primary);
-      padding: 20px 24px;
+      padding: 20px 22px;
       border-radius: 16px;
-      margin-bottom: 22px;
-      position: relative;
+      margin-bottom: 20px;
       box-shadow: var(--shadow-sm);
       border: 1px solid #bfdbfe;
       border-left-width: 6px;
@@ -251,19 +234,20 @@
       font-weight: 800;
       background: #2563eb;
       color: white;
-      padding: 3px 10px;
+      padding: 4px 10px;
       border-radius: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
       display: inline-flex;
       align-items: center;
       gap: 5px;
     }
 
     .problem-category {
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.9rem;
+      font-weight: 800;
       color: #0369a1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .problem-text {
@@ -290,16 +274,13 @@
       color: #1e40af;
       border: 1px solid #bae6fd;
       font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .hint-btn {
       background: white;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
-      padding: 4px 10px;
+      padding: 5px 12px;
       font-size: 0.88rem;
       font-weight: 700;
       color: #475569;
@@ -315,7 +296,7 @@
       color: #1d4ed8;
     }
 
-    /* SCENERY & ROAD CANVAS */
+    /* CANVAS & SCENERY */
     .canvas-container {
       background: linear-gradient(to bottom, #60a5fa 0%, #93c5fd 50%, #86efac 50%, #22c55e 100%);
       border-radius: 20px;
@@ -324,23 +305,22 @@
       overflow: hidden;
       border: 4px solid #e2e8f0;
       box-shadow: inset 0 3px 12px rgba(0,0,0,0.15);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    /* Clouds animation */
+    /* Animated Clouds */
     .cloud {
       position: absolute;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 50px;
-      opacity: 0.85;
       filter: blur(1px);
       z-index: 1;
-      animation: floatCloud 28s linear infinite;
+      animation: floatCloud linear infinite;
     }
     .cloud::before, .cloud::after {
       content: '';
       position: absolute;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 50%;
     }
     .cloud-1 {
@@ -352,8 +332,7 @@
 
     .cloud-2 {
       width: 70px; height: 24px; top: 48px; left: -80px;
-      animation-duration: 22s;
-      animation-delay: 10s;
+      animation-duration: 24s; animation-delay: 10s;
     }
     .cloud-2::before { width: 32px; height: 32px; top: -14px; left: 12px; }
 
@@ -362,7 +341,7 @@
       100% { transform: translateX(1100px); }
     }
 
-    /* Mountain & scenery trees */
+    /* Mountains */
     .mountains {
       position: absolute;
       bottom: 125px;
@@ -375,9 +354,8 @@
 
     .tree {
       position: absolute;
-      bottom: 110px;
+      bottom: 112px;
       z-index: 3;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
     }
 
     /* City Labels */
@@ -400,13 +378,13 @@
     .city-left { left: 16px; color: #1e40af; border-left: 4px solid #2563eb; }
     .city-right { right: 16px; color: #b91c1c; border-right: 4px solid #ef4444; }
 
-    /* The Road */
+    /* Road */
     .road-track {
       position: absolute;
       bottom: 48px;
       left: 0;
       width: 100%;
-      height: 68px;
+      height: 72px;
       background: #1e293b;
       display: flex;
       align-items: center;
@@ -430,20 +408,20 @@
       background: repeating-linear-gradient(90deg, #facc15, #facc15 28px, transparent 28px, transparent 56px);
     }
 
-    /* Modern Vehicles */
+    /* VEHICLE BOX & ROTATING WHEELS (FIXED & TUNED) */
     .vehicle-box {
       position: absolute;
-      bottom: 56px;
-      width: 82px;
-      height: 52px;
+      bottom: 54px;
+      height: 60px;
       z-index: 10;
-      transition: transform 0.05s linear;
       filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4));
+      display: flex;
+      align-items: flex-end;
     }
 
     .vehicle-tag {
       position: absolute;
-      top: -26px;
+      top: -24px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(15, 23, 42, 0.9);
@@ -457,15 +435,39 @@
       border: 1px solid rgba(255,255,255,0.2);
     }
 
-    /* Rotating wheels */
-    @keyframes wheelSpin {
+    /* Crucial: Wheel Rotation around its own center inside SVG */
+    .wheel-rim {
+      transform-box: fill-box;
+      transform-origin: 50% 50%;
+    }
+
+    /* Forward movement (to the right): wheels spin clockwise */
+    @keyframes spinClockwise {
+      0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .wheel-rim {
-      transform-origin: center;
+
+    /* Backward / Leftward movement: wheels spin counter-clockwise */
+    @keyframes spinCounterClockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
     }
-    .is-moving .wheel-rim {
-      animation: wheelSpin 0.35s linear infinite;
+
+    .is-moving-forward .wheel-rim {
+      animation: spinClockwise 0.32s linear infinite;
+    }
+
+    .is-moving-backward .wheel-rim {
+      animation: spinCounterClockwise 0.32s linear infinite;
+    }
+
+    /* Destination Checkpoint Flag */
+    .destination-flag {
+      position: absolute;
+      bottom: 114px;
+      z-index: 7;
+      transition: left 0.3s ease;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
     }
 
     /* Ruler */
@@ -501,14 +503,6 @@
       width: 2px;
       height: 14px;
       background: #64748b;
-    }
-
-    .destination-flag {
-      position: absolute;
-      bottom: 114px;
-      z-index: 7;
-      transition: left 0.3s ease;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
     }
 
     /* CONTROLS AREA */
@@ -558,7 +552,7 @@
     }
     .num-input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
     }
 
     .unit-badge {
@@ -579,7 +573,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.2s ease;
       box-shadow: var(--shadow-md);
     }
     .btn svg {
@@ -598,9 +592,6 @@
     .btn-action {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
-    }
-    .btn-action:hover {
-      background: linear-gradient(135deg, #1d4ed8, #1e40af);
     }
 
     .btn-next {
@@ -625,15 +616,16 @@
       font-size: 1.15rem;
       font-weight: 700;
       margin-top: 14px;
-      animation: bannerSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 14px;
+      animation: popIn 0.3s ease;
     }
-    @keyframes bannerSlide {
-      from { transform: translateY(-8px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .result-alert.success {
@@ -649,12 +641,12 @@
       border: 2px solid #fca5a5;
     }
 
-    /* SECTION 3: LAB STYLING */
+    /* SECTION 3: LAB */
     .lab-box {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .control-card {
@@ -705,7 +697,6 @@
       font-weight: 900;
       color: #5b21b6;
       margin-bottom: 18px;
-      box-shadow: var(--shadow-sm);
     }
     .equation-banner span {
       background: white;
@@ -716,7 +707,6 @@
       border: 1px solid #ddd6fe;
     }
 
-    /* HOUR MARKER ON ROAD */
     .step-marker {
       position: absolute;
       bottom: 118px;
@@ -731,7 +721,6 @@
       white-space: nowrap;
       z-index: 9;
       box-shadow: 0 2px 6px rgba(0,0,0,0.18);
-      animation: popMarker 0.3s ease;
     }
     .step-marker::after {
       content: '';
@@ -743,12 +732,8 @@
       border-style: solid;
       border-color: #eab308 transparent transparent transparent;
     }
-    @keyframes popMarker {
-      from { transform: translateX(-50%) scale(0.6); opacity: 0; }
-      to { transform: translateX(-50%) scale(1); opacity: 1; }
-    }
 
-    /* HINT MODAL */
+    /* MODAL */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -792,8 +777,8 @@
     }
 
     @media (max-width: 640px) {
-      h1 { font-size: 1.7rem; }
-      .problem-text { font-size: 1.18rem; }
+      h1 { font-size: 1.6rem; }
+      .problem-text { font-size: 1.15rem; }
       .canvas-container { height: 210px; }
       .top-actions { position: static; margin-bottom: 10px; justify-content: center; }
       .input-deck { flex-direction: column; width: 100%; }
@@ -808,8 +793,7 @@
     <div class="top-actions">
       <button class="icon-btn" id="soundBtn" onclick="toggleSound()">
         <span id="soundIcon">
-          <!-- Volume Icon SVG -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
         </span>
         Ovoz
       </button>
@@ -819,27 +803,22 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
       Matematika va uni o'qitish metodikasi
     </div>
-    <h1>
-      Harakatga doir masalalar
-    </h1>
+    <h1>Harakatga doir masalalar</h1>
     <p class="subtitle">Interaktiv metodik simulyator va didaktik o'yin</p>
   </header>
 
   <!-- NAVIGATION TABS -->
   <div class="tabs-bar">
     <button class="tab-btn active" id="tab1" onclick="switchTab(1)">
-      <!-- Car Icon SVG -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 11.1 2 11.5 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 11.1 2 11.5 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
       1. Bitta jism harakati (S = v · t)
     </button>
     <button class="tab-btn" id="tab2" onclick="switchTab(2)">
-      <!-- Dual Cars SVG -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m16 8-4-4-4 4"></path><path d="M12 4v16"></path><path d="m8 16 4 4 4-4"></path></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m16 8-4-4-4 4"></path><path d="M12 4v16"></path><path d="m8 16 4 4 4-4"></path></svg>
       2. Uchrashuv harakati (v₁ + v₂)
     </button>
     <button class="tab-btn" id="tab3" onclick="switchTab(3)">
-      <!-- Sliders / Lab SVG -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg>
       3. O'qituvchi laboratoriyasi
     </button>
   </div>
@@ -857,25 +836,18 @@
           1-BOSQICH: Oddiy to'g'ri chiziqli harakat
         </div>
         <div class="stats-group">
-          <div class="pill-stat pill-score">
-            <span>⭐ To'g'ri:</span>
-            <span id="score1">0</span>
-          </div>
-          <div class="pill-stat pill-streak">
-            <span>🔥 Ketma-ket:</span>
-            <span id="streak1">0</span>
-          </div>
+          <div class="pill-stat pill-score">⭐ To'g'ri: <span id="score1">0</span></div>
+          <div class="pill-stat pill-streak">🔥 Ketma-ket: <span id="streak1">0</span></div>
         </div>
       </div>
 
-      <!-- Problem description box -->
+      <!-- Problem box -->
       <div class="problem-box">
         <div class="problem-meta">
           <div class="problem-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             Masala № <span id="p1-number">1</span>
           </div>
-          <div class="problem-category" id="p1-category">Avtomobil harakati</div>
+          <div class="problem-category" id="p1-category">Transport harakati</div>
         </div>
         <div class="problem-text" id="p1-text">Masala yuklanmoqda...</div>
         <div class="problem-footer">
@@ -887,46 +859,42 @@
         </div>
       </div>
 
-      <!-- Live Scenery Canvas -->
+      <!-- Scenery Canvas -->
       <div class="canvas-container" id="canvas1">
-        <!-- Floating clouds -->
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
 
-        <!-- Mountain silhouette -->
         <svg class="mountains" viewBox="0 0 900 100" preserveAspectRatio="none">
           <polygon points="0,100 120,40 240,100 380,30 520,100 700,20 900,100" fill="#93c5fd" />
           <polygon points="60,100 180,50 300,100 450,45 600,100 760,35 900,100" fill="#60a5fa" />
         </svg>
 
-        <!-- Decorative trees -->
         <div class="tree" style="left: 14%;">
-          <svg width="28" height="42" viewBox="0 0 30 45">
-            <rect x="12" y="28" width="6" height="16" fill="#78350f" />
-            <polygon points="15,4 4,28 26,28" fill="#15803d" />
-            <polygon points="15,0 7,20 23,20" fill="#22c55e" />
+          <svg width="26" height="40" viewBox="0 0 30 45">
+            <rect x="12" y="26" width="6" height="18" fill="#78350f" />
+            <polygon points="15,4 4,26 26,26" fill="#15803d" />
+            <polygon points="15,0 7,18 23,18" fill="#22c55e" />
           </svg>
         </div>
         <div class="tree" style="right: 18%;">
           <svg width="24" height="38" viewBox="0 0 30 45">
-            <rect x="12" y="28" width="6" height="16" fill="#78350f" />
-            <polygon points="15,4 4,28 26,28" fill="#15803d" />
-            <polygon points="15,0 7,20 23,20" fill="#16a34a" />
+            <rect x="12" y="26" width="6" height="18" fill="#78350f" />
+            <polygon points="15,4 4,26 26,26" fill="#15803d" />
           </svg>
         </div>
 
         <!-- City Pins -->
         <div class="city-card city-left">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
           <span id="p1-start-label">A shahar (0 km)</span>
         </div>
 
         <div class="city-card city-right" id="p1-dest-label">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="10" r="3"></circle><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path></svg>
           <span id="p1-dest-text">B manzil</span>
         </div>
 
-        <!-- Destination Checkpoint Flag -->
+        <!-- Finish Flag -->
         <div class="destination-flag" id="p1-flag" style="left: 88%;">
           <svg width="34" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.2">
             <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" fill="#ef4444"></path>
@@ -934,68 +902,22 @@
           </svg>
         </div>
 
-        <!-- The Road -->
+        <!-- Road -->
         <div class="road-track">
           <div class="road-curb"></div>
           <div class="road-divider"></div>
         </div>
 
-        <!-- Vehicle (Sleek Modern Electric Sedan) -->
+        <!-- DYNAMIC VEHICLE (FACES TO THE RIGHT ➔) -->
         <div class="vehicle-box" id="car1" style="left: 20px;">
-          <div class="vehicle-tag" id="car1-label">60 km/h</div>
-          <svg viewBox="0 0 130 75" width="100%" height="100%">
-            <!-- Modern aerodynamic body -->
-            <defs>
-              <linearGradient id="carGradBlue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#3b82f6"/>
-                <stop offset="60%" stop-color="#1d4ed8"/>
-                <stop offset="100%" stop-color="#0f2b82"/>
-              </linearGradient>
-              <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#bfdbfe"/>
-                <stop offset="100%" stop-color="#60a5fa"/>
-              </linearGradient>
-            </defs>
-
-            <!-- Shadow underneath -->
-            <ellipse cx="65" cy="68" rx="55" ry="5" fill="rgba(0,0,0,0.35)" />
-
-            <!-- Car Body -->
-            <path d="M12,52 Q14,35 32,32 L48,32 L78,22 Q94,22 110,34 L122,46 Q126,50 124,56 L12,56 Q8,56 12,52 Z" fill="url(#carGradBlue)" />
-            <!-- Cabin Glass -->
-            <path d="M45,33 L76,24 Q88,24 98,33 L110,43 L45,43 Z" fill="url(#glassGrad)" opacity="0.9" />
-            <line x1="78" y1="24" x2="78" y2="43" stroke="#1e293b" stroke-width="2" />
-            <!-- LED Headlights -->
-            <polygon points="120,48 126,51 120,53" fill="#fef08a" />
-            <polygon points="12,50 8,52 12,54" fill="#ef4444" />
-            <!-- Door crease line -->
-            <path d="M44,43 L44,54 M82,43 L82,54" stroke="#1e40af" stroke-width="1.8" />
-
-            <!-- Wheels -->
-            <!-- Front Wheel -->
-            <g class="wheel-rim">
-              <circle cx="100" cy="56" r="14" fill="#0f172a" />
-              <circle cx="100" cy="56" r="9" fill="#94a3b8" />
-              <circle cx="100" cy="56" r="4" fill="#0f172a" />
-              <line x1="100" y1="47" x2="100" y2="65" stroke="#334155" stroke-width="2" />
-              <line x1="91" y1="56" x2="109" y2="56" stroke="#334155" stroke-width="2" />
-            </g>
-            <!-- Rear Wheel -->
-            <g class="wheel-rim">
-              <circle cx="34" cy="56" r="14" fill="#0f172a" />
-              <circle cx="34" cy="56" r="9" fill="#94a3b8" />
-              <circle cx="34" cy="56" r="4" fill="#0f172a" />
-              <line x1="34" y1="47" x2="34" y2="65" stroke="#334155" stroke-width="2" />
-              <line x1="25" y1="56" x2="43" y2="56" stroke="#334155" stroke-width="2" />
-            </g>
-          </svg>
+          <div class="vehicle-tag" id="car1-label">40 km/h</div>
+          <div id="car1-svg-wrap"></div>
         </div>
 
-        <!-- Scale ruler -->
         <div class="ruler-track" id="ruler1"></div>
       </div>
 
-      <!-- Controls deck -->
+      <!-- Controls -->
       <div class="controls-wrapper">
         <div class="input-deck">
           <div class="answer-card">
@@ -1026,18 +948,12 @@
     <div id="section2" style="display: none;">
       <div class="section-header">
         <div class="section-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M17 11l-5-5-5 5"></path><path d="M17 18l-5-5-5 5"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="m16 8-4-4-4 4"></path><path d="M12 4v16"></path><path d="m8 16 4 4 4-4"></path></svg>
           2-BOSQICH: Qarama-qarshi harakat (Uchrashuv)
         </div>
         <div class="stats-group">
-          <div class="pill-stat pill-score">
-            <span>⭐ To'g'ri:</span>
-            <span id="score2">0</span>
-          </div>
-          <div class="pill-stat pill-streak">
-            <span>🔥 Ketma-ket:</span>
-            <span id="streak2">0</span>
-          </div>
+          <div class="pill-stat pill-score">⭐ To'g'ri: <span id="score2">0</span></div>
+          <div class="pill-stat pill-streak">🔥 Ketma-ket: <span id="streak2">0</span></div>
         </div>
       </div>
 
@@ -1046,7 +962,7 @@
           <div class="problem-badge" style="background: #7c3aed;">
             Masala № <span id="p2-number">1</span>
           </div>
-          <div class="problem-category" style="color: #6d28d9;" id="p2-category">Ikki avtomobil uchrashuvi</div>
+          <div class="problem-category" style="color: #6d28d9;" id="p2-category">Uchrashuv harakati</div>
         </div>
         <div class="problem-text" id="p2-text">Masala yuklanmoqda...</div>
         <div class="problem-footer">
@@ -1080,41 +996,16 @@
           <div class="road-divider"></div>
         </div>
 
-        <!-- Blue Car (Left) -->
+        <!-- Left Vehicle: Faces RIGHT ➔ -->
         <div class="vehicle-box" id="car2-left" style="left: 20px;">
           <div class="vehicle-tag" id="car2-left-label">50 km/h</div>
-          <svg viewBox="0 0 130 75" width="100%" height="100%">
-            <defs>
-              <linearGradient id="gradBlue2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#3b82f6"/>
-                <stop offset="100%" stop-color="#1d4ed8"/>
-              </linearGradient>
-            </defs>
-            <path d="M12,52 Q14,35 32,32 L48,32 L78,22 Q94,22 110,34 L122,46 Q126,50 124,56 L12,56 Z" fill="url(#gradBlue2)" />
-            <path d="M45,33 L76,24 Q88,24 98,33 L110,43 L45,43 Z" fill="#bfdbfe" opacity="0.9" />
-            <polygon points="120,48 126,51 120,53" fill="#fef08a" />
-            <circle cx="100" cy="56" r="13" fill="#0f172a" /><circle cx="100" cy="56" r="8" fill="#cbd5e1" />
-            <circle cx="34" cy="56" r="13" fill="#0f172a" /><circle cx="34" cy="56" r="8" fill="#cbd5e1" />
-          </svg>
+          <div id="car2-left-svg"></div>
         </div>
 
-        <!-- Red Sports Car (Right, Facing Left) -->
-        <div class="vehicle-box" id="car2-right" style="right: 20px; transform: scaleX(-1);">
-          <div class="vehicle-tag" id="car2-right-label" style="transform: scaleX(-1) translateX(50%);">70 km/h</div>
-          <svg viewBox="0 0 130 75" width="100%" height="100%">
-            <defs>
-              <linearGradient id="gradRed2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ef4444"/>
-                <stop offset="60%" stop-color="#dc2626"/>
-                <stop offset="100%" stop-color="#991b1b"/>
-              </linearGradient>
-            </defs>
-            <path d="M12,52 Q14,35 32,32 L48,32 L78,22 Q94,22 110,34 L122,46 Q126,50 124,56 L12,56 Z" fill="url(#gradRed2)" />
-            <path d="M45,33 L76,24 Q88,24 98,33 L110,43 L45,43 Z" fill="#fecaca" opacity="0.9" />
-            <polygon points="120,48 126,51 120,53" fill="#fef08a" />
-            <circle cx="100" cy="56" r="13" fill="#0f172a" /><circle cx="100" cy="56" r="8" fill="#cbd5e1" />
-            <circle cx="34" cy="56" r="13" fill="#0f172a" /><circle cx="34" cy="56" r="8" fill="#cbd5e1" />
-          </svg>
+        <!-- Right Vehicle: Faces LEFT ⬅️ -->
+        <div class="vehicle-box" id="car2-right" style="right: 20px;">
+          <div class="vehicle-tag" id="car2-right-label">70 km/h</div>
+          <div id="car2-right-svg"></div>
         </div>
 
         <div class="ruler-track" id="ruler2"></div>
@@ -1130,7 +1021,7 @@
           </div>
 
           <button class="btn btn-action" id="p2-check-btn" onclick="checkP2()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             Harakatlantirish va Uchrashish
           </button>
         </div>
@@ -1160,7 +1051,6 @@
         Masofa: <span id="lab-s-val">120 km</span> = Tezlik: <span id="lab-v-disp">60 km/h</span> × Vaqt: <span id="lab-t-disp">2 soat</span>
       </div>
 
-      <!-- Controls -->
       <div class="lab-box">
         <div class="control-card">
           <div class="control-head">
@@ -1179,7 +1069,6 @@
         </div>
       </div>
 
-      <!-- Lab Canvas -->
       <div class="canvas-container" id="canvas3">
         <div class="cloud cloud-1"></div>
         <div class="city-card city-left">Boshlang'ich (0 km)</div>
@@ -1190,22 +1079,10 @@
           <div class="road-divider"></div>
         </div>
 
-        <!-- Violet Concept Car -->
+        <!-- Lab Vehicle: Faces RIGHT ➔ -->
         <div class="vehicle-box" id="car3" style="left: 20px;">
           <div class="vehicle-tag" id="car3-label">60 km/h</div>
-          <svg viewBox="0 0 130 75" width="100%" height="100%">
-            <defs>
-              <linearGradient id="gradPurple" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#a855f7"/>
-                <stop offset="100%" stop-color="#7c3aed"/>
-              </linearGradient>
-            </defs>
-            <path d="M12,52 Q14,35 32,32 L48,32 L78,22 Q94,22 110,34 L122,46 Q126,50 124,56 L12,56 Z" fill="url(#gradPurple)" />
-            <path d="M45,33 L76,24 Q88,24 98,33 L110,43 L45,43 Z" fill="#e9d5ff" opacity="0.9" />
-            <polygon points="120,48 126,51 120,53" fill="#fef08a" />
-            <circle cx="100" cy="56" r="13" fill="#0f172a" /><circle cx="100" cy="56" r="8" fill="#e2e8f0" />
-            <circle cx="34" cy="56" r="13" fill="#0f172a" /><circle cx="34" cy="56" r="8" fill="#e2e8f0" />
-          </svg>
+          <div id="car3-svg-wrap"></div>
         </div>
 
         <div id="hour-markers-container"></div>
@@ -1232,9 +1109,7 @@
         <h3 class="modal-title">💡 Metodik tushuntirish</h3>
         <button class="close-modal" onclick="closeHintModal()">&times;</button>
       </div>
-      <div id="hintBody" style="font-size: 1.05rem; line-height: 1.6; color: #334155;">
-        <!-- Filled by JS -->
-      </div>
+      <div id="hintBody" style="font-size: 1.05rem; line-height: 1.6; color: #334155;"></div>
       <div style="margin-top: 18px; text-align: right;">
         <button class="btn btn-secondary" onclick="closeHintModal()">Tushunarli</button>
       </div>
@@ -1243,7 +1118,177 @@
 
   <script>
     // ==========================================
-    // AUDIO ENGINE (Web Audio API - Synthesized)
+    // VECTOR VEHICLE FACTORY (All models face RIGHT by default!)
+    // Front on RIGHT (x ~ 120-160), Rear on LEFT (x ~ 10-20)
+    // ==========================================
+
+    function createWheelMarkup(cx, cy, r = 13) {
+      return `
+        <g class="wheel-rim">
+          <circle cx="${cx}" cy="${cy}" r="${r}" fill="#0f172a" />
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.6}" fill="#94a3b8" />
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.28}" fill="#0f172a" />
+          <line x1="${cx}" y1="${cy - r + 2}" x2="${cx}" y2="${cy + r - 2}" stroke="#1e293b" stroke-width="2.5" />
+          <line x1="${cx - r + 2}" y1="${cy}" x2="${cx + r - 2}" y2="${cy}" stroke="#1e293b" stroke-width="2.5" />
+          <line x1="${cx - r*0.7}" y1="${cy - r*0.7}" x2="${cx + r*0.7}" y2="${cy + r*0.7}" stroke="#1e293b" stroke-width="2" />
+          <line x1="${cx - r*0.7}" y1="${cy + r*0.7}" x2="${cx + r*0.7}" y2="${cy - r*0.7}" stroke="#1e293b" stroke-width="2" />
+        </g>
+      `;
+    }
+
+    function getVehicleSvg(type, faceRight = true, customColor = null) {
+      // If faceRight is false, we mirror horizontally so it faces LEFT
+      const transform = faceRight ? '' : 'style="transform: scaleX(-1);"';
+
+      // 1. YUK MASHINASI (TRUCK) - Real big rig: Cargo bed on left, Cab on right!
+      if (type === 'truck') {
+        const bodyColor = customColor || '#0284c7';
+        return `
+          <svg viewBox="0 0 170 75" width="125" height="55" ${transform}>
+            <ellipse cx="85" cy="68" rx="75" ry="5" fill="rgba(0,0,0,0.3)" />
+            <!-- Cargo Container (Left) -->
+            <rect x="8" y="14" width="94" height="42" rx="4" fill="#334155" />
+            <rect x="12" y="18" width="86" height="34" rx="2" fill="#475569" />
+            <line x1="34" y1="18" x2="34" y2="52" stroke="#1e293b" stroke-width="2" />
+            <line x1="56" y1="18" x2="56" y2="52" stroke="#1e293b" stroke-width="2" />
+            <line x1="78" y1="18" x2="78" y2="52" stroke="#1e293b" stroke-width="2" />
+            <!-- Cab (Right, Facing Right) -->
+            <path d="M102,28 L126,28 L142,38 L160,44 L160,56 L102,56 Z" fill="${bodyColor}" />
+            <!-- Cab Windshield (Facing Right) -->
+            <path d="M124,31 L139,40 L124,40 Z" fill="#93c5fd" />
+            <!-- Front Grill & Headlight (On Right!) -->
+            <rect x="156" y="45" width="4" height="10" fill="#cbd5e1" />
+            <polygon points="156,48 162,50 156,53" fill="#fef08a" />
+            <!-- Exhaust stack -->
+            <rect x="104" y="8" width="5" height="20" fill="#94a3b8" rx="2" />
+            <!-- Wheels (Rear dual + Front cab) -->
+            ${createWheelMarkup(32, 57, 13)}
+            ${createWheelMarkup(64, 57, 13)}
+            ${createWheelMarkup(138, 57, 13)}
+          </svg>
+        `;
+      }
+
+      // 2. TEZYURAR POYEZD ("AFROSIYOB" BULLET TRAIN) - Sleek aerodynamic nose facing right!
+      if (type === 'train') {
+        return `
+          <svg viewBox="0 0 180 70" width="135" height="52" ${transform}>
+            <ellipse cx="90" cy="65" rx="80" ry="4" fill="rgba(0,0,0,0.3)" />
+            <!-- Aerodynamic body -->
+            <path d="M10,24 L120,24 Q155,24 175,44 L175,54 L10,54 Z" fill="#f8fafc" />
+            <!-- Turquoise & Blue stripes like Afrosiyob -->
+            <path d="M10,40 L135,40 Q158,40 172,48 L174,54 L10,54 Z" fill="#0284c7" />
+            <rect x="10" y="36" width="130" height="3" fill="#0d9488" />
+            <!-- Cockpit Glass (Sharp nose on right) -->
+            <path d="M136,28 Q155,29 168,40 L146,40 Z" fill="#1e293b" />
+            <!-- Passenger Windows -->
+            <rect x="20" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
+            <rect x="42" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
+            <rect x="64" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
+            <rect x="86" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
+            <rect x="108" y="28" width="14" height="8" rx="2" fill="#38bdf8" />
+            <!-- Front LED light on right -->
+            <circle cx="172" cy="46" r="3" fill="#fef08a" />
+            <!-- Wheels behind skirt -->
+            ${createWheelMarkup(36, 56, 11)}
+            ${createWheelMarkup(65, 56, 11)}
+            ${createWheelMarkup(125, 56, 11)}
+          </svg>
+        `;
+      }
+
+      // 3. AVTOBUS (BUS) - Long passenger bus with windows, facing right
+      if (type === 'bus') {
+        const bodyColor = customColor || '#eab308';
+        return `
+          <svg viewBox="0 0 160 75" width="120" height="56" ${transform}>
+            <ellipse cx="80" cy="68" rx="70" ry="4" fill="rgba(0,0,0,0.3)" />
+            <path d="M8,20 L130,20 Q148,20 154,32 L154,58 L8,58 Z" fill="${bodyColor}" />
+            <!-- Front Windshield on right -->
+            <path d="M132,24 L148,34 L132,34 Z" fill="#bae6fd" />
+            <!-- Passenger Windows -->
+            <rect x="16" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
+            <rect x="40" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
+            <rect x="64" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
+            <rect x="88" y="24" width="18" height="12" rx="2" fill="#e0f2fe" />
+            <rect x="112" y="24" width="14" height="12" rx="2" fill="#e0f2fe" />
+            <!-- Headlights right -->
+            <circle cx="152" cy="48" r="3.5" fill="#fef08a" />
+            <circle cx="10" cy="48" r="3" fill="#ef4444" />
+            <!-- Wheels -->
+            ${createWheelMarkup(38, 58, 13)}
+            ${createWheelMarkup(124, 58, 13)}
+          </svg>
+        `;
+      }
+
+      // 4. SPORTKAR (RACE CAR) - Aggressive low spoiler on left, sharp nose on right
+      if (type === 'sport') {
+        const bodyColor = customColor || '#dc2626';
+        return `
+          <svg viewBox="0 0 150 70" width="115" height="52" ${transform}>
+            <ellipse cx="75" cy="65" rx="65" ry="4" fill="rgba(0,0,0,0.35)" />
+            <!-- Rear Spoiler (Left) -->
+            <rect x="12" y="22" width="6" height="14" fill="#0f172a" />
+            <rect x="8" y="20" width="22" height="4" rx="2" fill="#0f172a" />
+            <!-- Low Slung Body (Front on Right) -->
+            <path d="M16,42 Q28,28 50,28 L82,24 Q106,24 130,40 L144,48 L144,56 L16,56 Z" fill="${bodyColor}" />
+            <!-- Cockpit Glass -->
+            <path d="M54,30 L80,26 Q98,26 112,38 L54,38 Z" fill="#1e293b" />
+            <!-- Sharp LED Headlight (Right) -->
+            <polygon points="138,45 145,49 138,51" fill="#fef08a" />
+            <!-- Wheels -->
+            ${createWheelMarkup(38, 56, 13)}
+            ${createWheelMarkup(116, 56, 13)}
+          </svg>
+        `;
+      }
+
+      // 5. MOTOTSIKL (MOTORCYCLE) - Courier with delivery box on left, front wheel on right
+      if (type === 'moto') {
+        return `
+          <svg viewBox="0 0 120 70" width="95" height="55" ${transform}>
+            <ellipse cx="60" cy="65" rx="45" ry="3.5" fill="rgba(0,0,0,0.3)" />
+            <!-- Delivery Box (Left) -->
+            <rect x="12" y="20" width="26" height="24" rx="3" fill="#ea580c" />
+            <text x="18" y="36" font-size="10" font-weight="bold" fill="white">BOX</text>
+            <!-- Rider & Bike Frame -->
+            <circle cx="56" cy="18" r="8" fill="#1e293b" />
+            <path d="M52,26 L62,38 L48,46" stroke="#2563eb" stroke-width="5" stroke-linecap="round" />
+            <path d="M36,46 L60,46 L82,32 L94,48" stroke="#334155" stroke-width="4" fill="none" />
+            <!-- Handlebars & Front Headlight (Right) -->
+            <line x1="78" y1="28" x2="86" y2="34" stroke="#0f172a" stroke-width="3" />
+            <circle cx="94" cy="38" r="3" fill="#fef08a" />
+            <!-- Wheels -->
+            ${createWheelMarkup(26, 54, 13)}
+            ${createWheelMarkup(94, 54, 13)}
+          </svg>
+        `;
+      }
+
+      // 6. DEFAULT: MODERN ELECTRIC SEDAN (COBALT / MALIBU STYLE) - Front on RIGHT!
+      const bodyColor = customColor || '#2563eb';
+      return `
+        <svg viewBox="0 0 145 70" width="112" height="52" ${transform}>
+          <ellipse cx="72" cy="65" rx="62" ry="4" fill="rgba(0,0,0,0.35)" />
+          <!-- Aerodynamic Sedan Body (Hood on Right, Trunk on Left) -->
+          <path d="M12,46 Q16,36 32,34 L56,34 L82,22 Q104,22 118,34 L138,44 Q142,48 140,56 L12,56 Z" fill="${bodyColor}" />
+          <!-- Cabin Glass -->
+          <path d="M55,34 L80,24 Q100,24 112,34 L122,42 L55,42 Z" fill="#93c5fd" opacity="0.9" />
+          <line x1="84" y1="24" x2="84" y2="42" stroke="#1e293b" stroke-width="2" />
+          <!-- Headlight (Front Right!) -->
+          <polygon points="134,46 141,49 134,51" fill="#fef08a" />
+          <!-- Taillight (Rear Left!) -->
+          <polygon points="13,47 10,49 13,51" fill="#ef4444" />
+          <!-- Wheels -->
+          ${createWheelMarkup(36, 56, 13)}
+          ${createWheelMarkup(114, 56, 13)}
+        </svg>
+      `;
+    }
+
+    // ==========================================
+    // AUDIO ENGINE
     // ==========================================
     let soundEnabled = true;
     let audioCtx = null;
@@ -1260,9 +1305,9 @@
       if (soundEnabled) {
         icon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
         document.getElementById('soundBtn').style.opacity = '1';
-        playTone(520, 0.1, 'sine');
+        playTone(520, 0.1);
       } else {
-        icon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="23" y2="23"></line><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M23 9l-6 6"></path><path d="M17 9l6 6"></path></svg>`;
+        icon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="23" y2="23"></line><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon></svg>`;
         document.getElementById('soundBtn').style.opacity = '0.6';
       }
     }
@@ -1286,8 +1331,7 @@
 
     function playWinSound() {
       if (!soundEnabled) return;
-      const notes = [261.6, 329.6, 392.0, 523.3, 659.3];
-      notes.forEach((f, i) => {
+      [261.6, 329.6, 392.0, 523.3].forEach((f, i) => {
         setTimeout(() => playTone(f, 0.22, 'triangle', 0.2), i * 100);
       });
     }
@@ -1330,102 +1374,113 @@
     }
 
     // ==========================================
-    // EXTENSIVE PROBLEMS DATABASE & GENERATOR
+    // 1-BOSQICH: MASALALAR BAZASI VA HAR XIL MASHINALAR
     // ==========================================
     let score1 = 0, streak1 = 0, p1Index = 1;
     let currentP1 = {};
     const maxKm1 = 240;
 
-    // Diverse Problem Generators across multiple entities
     const problemPool1 = [
-      // 1. Cobalt / Yengil mashina (S = v * t)
-      () => {
-        const v = [50, 60, 70, 80][Math.floor(Math.random() * 4)];
-        const t = [2, 3, 4][Math.floor(Math.random() * 3)];
-        const s = v * t;
-        return {
-          cat: "Yengil avtomobil harakati",
-          text: `Cobalt avtomobili Samarqanddan Toshkentga tomon <b>${v} km/soat</b> o'zgarmas tezlik bilan <b>${t} soat</b> yurdi. U jami necha kilometr masofani (S) bosib o'tdi?`,
-          target: s, v, t, s, unit: 'km',
-          label: 'Masofani toping (S):',
-          formula: 'Formula: S = v · t',
-          calc: `S = ${v} · ${t} = ${s} km`,
-          hint: `Masofani topish uchun harakat tezligini vaqtga ko'paytirish zarur:<br><b>S = v · t</b><br>Bizda: v = ${v} km/soat, t = ${t} soat.`
-        };
-      },
-      // 2. Afrosiyob tezyurar poyezdi (v = S / t)
-      () => {
-        const t = [2, 3][Math.floor(Math.random() * 2)];
-        const v = [60, 70, 80][Math.floor(Math.random() * 3)];
-        const s = v * t;
-        return {
-          cat: "Afrosiyob poyezdi",
-          text: `"Afrosiyob" tezyurar poyezdi <b>${s} km</b> masofani to'xtamasdan <b>${t} soatda</b> bosib o'tdi. Poyezdning o'rtacha tezligini (v) aniqlang.`,
-          target: v, v, t, s, unit: 'km/soat',
-          label: 'Tezlikni toping (v):',
-          formula: 'Formula: v = S / t',
-          calc: `v = ${s} : ${t} = ${v} km/soat`,
-          hint: `Tezlikni topish uchun bosib o'tilgan masofani ketgan vaqtga bo'lish kerak:<br><b>v = S / t</b><br>Bizda: S = ${s} km, t = ${t} soat.`
-        };
-      },
-      // 3. Yuk mashinasi (t = S / v)
+      // 1. Yuk mashinasi -> TRUCK
       () => {
         const v = [40, 50, 60][Math.floor(Math.random() * 3)];
         const t = [2, 3, 4][Math.floor(Math.random() * 3)];
         const s = v * t;
         return {
           cat: "Yuk mashinasi",
+          vehicleType: "truck",
+          color: "#0284c7",
           text: `Yuk tashuvchi mashina <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> uzoqlikdagi logistika markaziga yetib borishi uchun qancha vaqt (t) sarflaydi?`,
           target: t, v, t, s, unit: 'soat',
           label: 'Vaqtni toping (t):',
           formula: 'Formula: t = S / v',
           calc: `t = ${s} : ${v} = ${t} soat`,
-          hint: `Vaqtni topish uchun masofani harakat tezligiga bo'lish lozim:<br><b>t = S / v</b><br>Bizda: S = ${s} km, v = ${v} km/soat.`
+          hint: `Vaqtni topish uchun masofani tezlikka bo'lish zarur:<br><b>t = S / v</b><br>Bizda: S = ${s} km, v = ${v} km/soat.`
         };
       },
-      // 4. Qulay avtobus sayohati (S = v * t)
+      // 2. Afrosiyob tezyurar poyezdi -> TRAIN
       () => {
-        const v = [45, 55, 65][Math.floor(Math.random() * 3)];
-        const t = [2, 4][Math.floor(Math.random() * 2)];
+        const t = [2, 3][Math.floor(Math.random() * 2)];
+        const v = [60, 70, 80][Math.floor(Math.random() * 3)];
         const s = v * t;
         return {
-          cat: "Sayyohlik avtobusi",
-          text: `Sayyohlarni olib ketayotgan avtobus <b>${v} km/soat</b> tezlik bilan to'xtovsiz <b>${t} soat</b> yo'l yurdi. Sayyohlar qancha masofani (S) ortda qoldirdi?`,
+          cat: "Afrosiyob poyezdi",
+          vehicleType: "train",
+          color: "#0284c7",
+          text: `"Afrosiyob" tezyurar poyezdi <b>${s} km</b> masofani bekatlarda to'xtamasdan <b>${t} soatda</b> bosib o'tdi. Poyezdning tezligini (v) aniqlang.`,
+          target: v, v, t, s, unit: 'km/soat',
+          label: 'Tezlikni toping (v):',
+          formula: 'Formula: v = S / t',
+          calc: `v = ${s} : ${t} = ${v} km/soat`,
+          hint: `Tezlikni topish uchun masofa vaqtga bo'linadi:<br><b>v = S / t</b><br>Bizda: S = ${s} km, t = ${t} soat.`
+        };
+      },
+      // 3. Cobalt yengil avtomobili -> SEDAN
+      () => {
+        const v = [50, 60, 70, 80][Math.floor(Math.random() * 4)];
+        const t = [2, 3, 4][Math.floor(Math.random() * 3)];
+        const s = v * t;
+        return {
+          cat: "Cobalt yengil avtomobili",
+          vehicleType: "sedan",
+          color: "#2563eb",
+          text: `Cobalt avtomobili Toshkentdan Samarqandga tomon <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> to'xtovsiz harakatlandi. Avtomobil qancha masofani (S) bosib o'tdi?`,
           target: s, v, t, s, unit: 'km',
           label: 'Masofani toping (S):',
           formula: 'Formula: S = v · t',
           calc: `S = ${v} · ${t} = ${s} km`,
-          hint: `Harakat masofasi formulasi:<br><b>S = v · t</b><br>Avtobus tezligi ${v} km/soat, harakat vaqti ${t} soat.`
+          hint: `Masofani topish uchun tezlikni vaqtga ko'paytirish zarur:<br><b>S = v · t</b><br>Bizda: v = ${v} km/soat, t = ${t} soat.`
         };
       },
-      // 5. Mototsikl kuryeri (v = S / t)
+      // 4. Sayyohlik avtobusi -> BUS
+      () => {
+        const v = [45, 55, 60][Math.floor(Math.random() * 3)];
+        const t = [2, 3, 4][Math.floor(Math.random() * 3)];
+        const s = v * t;
+        return {
+          cat: "Sayyohlik avtobusi",
+          vehicleType: "bus",
+          color: "#eab308",
+          text: `Sayyohlarni olib ketayotgan katta avtobus <b>${v} km/soat</b> tezlik bilan <b>${t} soat</b> yo'l yurdi. Sayyohlar necha kilometr masofani (S) ortda qoldirdi?`,
+          target: s, v, t, s, unit: 'km',
+          label: 'Masofani toping (S):',
+          formula: 'Formula: S = v · t',
+          calc: `S = ${v} · ${t} = ${s} km`,
+          hint: `Masofa formulasi: <b>S = v · t</b>.`
+        };
+      },
+      // 5. Tezkor kuryer -> MOTO
       () => {
         const t = [2, 3][Math.floor(Math.random() * 2)];
         const v = [50, 60, 70][Math.floor(Math.random() * 3)];
         const s = v * t;
         return {
-          cat: "Ekspress kuryer",
+          cat: "Tezkor mototsikl kuryeri",
+          vehicleType: "moto",
+          color: "#ea580c",
           text: `Tezkor kuryer shaharlararo <b>${s} km</b> masofani mototsiklda <b>${t} soatda</b> yetib bordi. Kuryer qanday tezlik (v) bilan harakatlangan?`,
           target: v, v, t, s, unit: 'km/soat',
           label: 'Tezlikni toping (v):',
           formula: 'Formula: v = S / t',
           calc: `v = ${s} : ${t} = ${v} km/soat`,
-          hint: `Tezlikni topish qoidasi: masofa bo'lingan vaqt:<br><b>v = S / t</b>.`
+          hint: `Tezlikni topish qoidasi: masofa bo'lingan vaqt: <b>v = S / t</b>.`
         };
       },
-      // 6. Shaharlararo marshrutka (t = S / v)
+      // 6. Qizil Sportkar -> SPORT
       () => {
-        const v = [50, 60][Math.floor(Math.random() * 2)];
-        const t = [3, 4][Math.floor(Math.random() * 2)];
+        const v = [70, 80][Math.floor(Math.random() * 2)];
+        const t = [2, 3][Math.floor(Math.random() * 2)];
         const s = v * t;
         return {
-          cat: "Shaharlararo yo'lovchi transporti",
-          text: `Yo'lovchi marshrutkasi <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> yo'l bosishi kerak. Manzilga yetib borish necha soat (t) vaqt oladi?`,
+          cat: "Poyga sportkari",
+          vehicleType: "sport",
+          color: "#dc2626",
+          text: `Poyga mashinasi sinov trassasida <b>${v} km/soat</b> tezlik bilan <b>${s} km</b> masofani bosib o'tishi uchun necha soat (t) kerak bo'ladi?`,
           target: t, v, t, s, unit: 'soat',
           label: 'Vaqtni toping (t):',
           formula: 'Formula: t = S / v',
           calc: `t = ${s} : ${v} = ${t} soat`,
-          hint: `Sarflangan vaqt: <b>t = S / v</b>.`
+          hint: `Vaqtni topish formulasi: <b>t = S / v</b>.`
         };
       }
     ];
@@ -1443,13 +1498,16 @@
       document.getElementById('p1-answer').value = '';
       document.getElementById('car1-label').innerText = currentP1.v + ' km/h';
 
+      // Inject the matching vehicle SVG (facing RIGHT ➔)
+      document.getElementById('car1-svg-wrap').innerHTML = getVehicleSvg(currentP1.vehicleType, true, currentP1.color);
+
       // Position flag
       const flagPct = 4 + (Math.min(currentP1.s, maxKm1) / maxKm1) * 88;
       document.getElementById('p1-flag').style.left = flagPct + '%';
       document.getElementById('p1-dest-text').innerText = `B manzil (${currentP1.s} km)`;
 
       // Reset
-      resetVehiclePosition('car1', 4);
+      resetCar('car1', 4);
       hideBanner('p1-result');
       document.getElementById('p1-check-btn').disabled = false;
       document.getElementById('p1-next-btn').style.display = 'none';
@@ -1458,14 +1516,13 @@
     function checkP1() {
       const input = parseFloat(document.getElementById('p1-answer').value);
       if (isNaN(input)) {
-        alert('Iltimos, sonli javobingizni kiriting!');
+        alert('Iltimos, javobni kiriting!');
         return;
       }
 
       document.getElementById('p1-check-btn').disabled = true;
       const isCorrect = Math.abs(input - currentP1.target) < 0.1;
 
-      // Calculate where car goes based on user input
       let travelled = currentP1.s;
       if (!isCorrect) {
         if (currentP1.target === currentP1.s) travelled = input;
@@ -1476,7 +1533,7 @@
       const clamped = Math.max(0, Math.min(maxKm1, travelled));
       const endPct = 4 + (clamped / maxKm1) * 88;
 
-      animateVehicleSmooth('car1', 4, endPct, 1300, () => {
+      animateCarForward('car1', 4, endPct, 1300, () => {
         const resEl = document.getElementById('p1-result');
         const msgEl = document.getElementById('p1-msg');
         resEl.style.display = 'flex';
@@ -1488,7 +1545,7 @@
           document.getElementById('score1').innerText = score1;
           document.getElementById('streak1').innerText = streak1;
           resEl.className = 'result-alert success';
-          msgEl.innerHTML = `🎉 <b>Ofarin! Javob mutlaqo to'g'ri!</b><br>Yechim: ${currentP1.calc}. Avtomobil belgilangan nuqtaga aniq yetib keldi.`;
+          msgEl.innerHTML = `🎉 <b>Ofarin! Javob mutlaqo to'g'ri!</b><br>Yechim: ${currentP1.calc}. Transport manzilga aniq yetib keldi.`;
           document.getElementById('p1-next-btn').style.display = 'inline-flex';
         } else {
           playErrorSound();
@@ -1496,9 +1553,9 @@
           document.getElementById('streak1').innerText = streak1;
           resEl.className = 'result-alert error';
           let errText = travelled < currentP1.s
-            ? 'Mashina manzilga yetmadi (masofa kam chiqdi).'
-            : 'Mashina belgilangan manzildan o\'tib ketdi!';
-          msgEl.innerHTML = `❌ <b>Javob to'g'ri emas.</b> ${errText}<br>💡 ${currentP1.formula}. Qaytadan urinib ko'ring yoki maslahatni oching!`;
+            ? 'Transport manzilga yetmadi (masofa kam bo\'ldi).'
+            : 'Transport belgilangan manzildan o\'tib ketdi!';
+          msgEl.innerHTML = `❌ <b>Javob to'g'ri emas.</b> ${errText}<br>💡 ${currentP1.formula}. Qaytadan urinib ko'ring!`;
           document.getElementById('p1-check-btn').disabled = false;
         }
       });
@@ -1520,7 +1577,7 @@
     }
 
     // ==========================================
-    // SECTION 2: UCHRASHUV HARAKATI
+    // 2-BOSQICH: UCHRASHUV HARAKATI
     // ==========================================
     let score2 = 0, streak2 = 0, p2Index = 1;
     let currentP2 = {};
@@ -1528,39 +1585,36 @@
 
     const problemPool2 = [
       () => ({
-        cat: "Toshkent — Samarqand magistrali",
-        text: `Ikki shahar orasidagi masofa <b>240 km</b>. Toshkentdan <b>50 km/soat</b> tezlikda ko'k mashina, Samarqanddan <b>70 km/soat</b> tezlikda qizil mashina bir-biriga qarab bir vaqtda yo'lga chiqdi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
+        cat: "Toshkent — Samarqand yo'li",
+        text: `Oraliq masofa <b>240 km</b>. Toshkentdan <b>50 km/soat</b> tezlikda yuk mashinasi, Samarqanddan <b>70 km/soat</b> tezlikda yengil avtomobil bir-biriga qarab yo'lga chiqdi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
         v1: 50, v2: 70, s: 240, target: 2, unit: "soat",
-        label: "Uchrashuv vaqti (t):",
-        hint: `Ular bir-biriga qarab harakatlanganda har soatda tezliklari yig'indisicha yaqinlashadi:<br><b>v_yaqinlashish = 50 + 70 = 120 km/soat</b>.<br>Uchrashuv vaqti: t = 240 : 120 = 2 soat.`
+        v1Type: "truck", v1Color: "#0284c7",
+        v2Type: "sport", v2Color: "#dc2626",
+        hint: `Yaqinlashish tezligi: 50 + 70 = 120 km/soat.<br>Uchrashuv vaqti: t = 240 : 120 = 2 soat.`
       }),
       () => ({
-        cat: "Buxoro — Navoiy yo'li",
-        text: `Oraliq masofasi <b>200 km</b> bo'lgan ikkita shahardan bir vaqtda bir-biriga qarab yuk mashinasi (<b>40 km/soat</b>) va yengil avtomobil (<b>60 km/soat</b>) harakatlana boshladi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
+        cat: "Buxoro — Navoiy qatnovi",
+        text: `Masofasi <b>200 km</b> bo'lgan ikkita shahardan bir vaqtda bir-biriga tomon avtobus (<b>40 km/soat</b>) va Cobalt (<b>60 km/soat</b>) harakatlana boshladi. Ular <b>necha soatdan keyin</b> uchrashadi?`,
         v1: 40, v2: 60, s: 200, target: 2, unit: "soat",
-        label: "Uchrashuv vaqti (t):",
-        hint: `Yaqinlashish tezligi: 40 + 60 = 100 km/soat.<br>Uchrashish vaqti: t = 200 : 100 = 2 soat.`
+        v1Type: "bus", v1Color: "#eab308",
+        v2Type: "sedan", v2Color: "#2563eb",
+        hint: `Yaqinlashish tezligi: 40 + 60 = 100 km/soat.<br>Vaqt: t = 200 : 100 = 2 soat.`
       }),
       () => ({
-        cat: "Farg'ona — Andijon yo'li",
-        text: `Oraliq masofasi <b>180 km</b> bo'lgan bekatlardan bir vaqtda qarama-qarshi yo'nalishda ikki avtobus yo'lga chiqdi. Birinchisining tezligi <b>40 km/soat</b>, ikkinchisiniki <b>50 km/soat</b>. Ular necha soatdan so'ng uchrashadi?`,
-        v1: 40, v2: 50, s: 180, target: 2, unit: "soat",
-        label: "Uchrashuv vaqti (t):",
-        hint: `Umumiy yaqinlashish tezligi: v = 40 + 50 = 90 km/soat.<br>Vaqt: t = 180 : 90 = 2 soat.`
+        cat: "Farg'ona — Andijon yo'nalishi",
+        text: `Oraliq masofasi <b>180 km</b>. Bir tomondan tezyurar poyezd (<b>50 km/soat</b>), ikkinchi tomondan yuk mashinasi (<b>40 km/soat</b>) yo'lga chiqdi. Ular necha soatdan so'ng uchrashadi?`,
+        v1: 50, v2: 40, s: 180, target: 2, unit: "soat",
+        v1Type: "train", v1Color: "#0284c7",
+        v2Type: "truck", v2Color: "#475569",
+        hint: `Yaqinlashish tezligi: 50 + 40 = 90 km/soat.<br>Vaqt: t = 180 : 90 = 2 soat.`
       }),
       () => ({
-        cat: "Qarshi — Shahrisabz qatnovi",
-        text: `Oraliq masofa <b>210 km</b>. Birinchi mashina tezligi <b>45 km/soat</b>, ikkinchisiniki <b>60 km/soat</b>. Agar ular bir-biriga tomon harakatlansa, necha soatda uchrashuv ro'y beradi?`,
+        cat: "Qarshi — Shahrisabz yo'li",
+        text: `Masofa <b>210 km</b>. Mototsikl kuryeri (<b>45 km/soat</b>) va yengil avtomobil (<b>60 km/soat</b>) bir-biriga qarab harakatlanmoqda. Uchrashuv qachon yuz beradi?`,
         v1: 45, v2: 60, s: 210, target: 2, unit: "soat",
-        label: "Uchrashuv vaqti (t):",
+        v1Type: "moto", v1Color: "#ea580c",
+        v2Type: "sedan", v2Color: "#059669",
         hint: `Yaqinlashish tezligi: 45 + 60 = 105 km/soat.<br>Vaqt: t = 210 : 105 = 2 soat.`
-      }),
-      () => ({
-        cat: "Orolbo'yi magistrali",
-        text: `Ikki manzil oralig'i <b>240 km</b>. Birinchi transport tezligi <b>35 km/soat</b>, ikkinchisiniki <b>45 km/soat</b>. Ular bir-biriga qarab yo'lga chiqdi. Uchrashuv necha soatdan so'ng bo'ladi?`,
-        v1: 35, v2: 45, s: 240, target: 3, unit: "soat",
-        label: "Uchrashuv vaqti (t):",
-        hint: `Yaqinlashish tezligi: 35 + 45 = 80 km/soat.<br>Vaqt: t = 240 : 80 = 3 soat.`
       })
     ];
 
@@ -1572,15 +1626,19 @@
       document.getElementById('p2-category').innerText = currentP2.cat;
       document.getElementById('p2-text').innerHTML = currentP2.text;
       document.getElementById('p2-city-b').innerText = `B shahar (${currentP2.s} km)`;
-      document.getElementById('p2-input-label').innerText = currentP2.label;
       document.getElementById('p2-unit').innerText = currentP2.unit;
       document.getElementById('p2-answer').value = '';
 
       document.getElementById('car2-left-label').innerText = currentP2.v1 + ' km/h';
       document.getElementById('car2-right-label').innerText = currentP2.v2 + ' km/h';
 
-      resetVehiclePosition('car2-left', 4);
-      resetVehiclePosition('car2-right', 4, true);
+      // Left vehicle faces RIGHT (true)
+      document.getElementById('car2-left-svg').innerHTML = getVehicleSvg(currentP2.v1Type, true, currentP2.v1Color);
+      // Right vehicle faces LEFT (false)
+      document.getElementById('car2-right-svg').innerHTML = getVehicleSvg(currentP2.v2Type, false, currentP2.v2Color);
+
+      resetCar('car2-left', 4);
+      resetCar('car2-right', 4, true);
       hideBanner('p2-result');
       document.getElementById('p2-check-btn').disabled = false;
       document.getElementById('p2-next-btn').style.display = 'none';
@@ -1596,7 +1654,6 @@
       document.getElementById('p2-check-btn').disabled = true;
       const isCorrect = Math.abs(input - currentP2.target) < 0.1;
 
-      // Animate meeting
       const simT = isCorrect ? currentP2.target : Math.min(input, 3.5);
       const s1 = currentP2.v1 * simT;
       const s2 = currentP2.v2 * simT;
@@ -1617,14 +1674,14 @@
           document.getElementById('streak2').innerText = streak2;
           resEl.className = 'result-alert success';
           const vSum = currentP2.v1 + currentP2.v2;
-          msgEl.innerHTML = `🎉 <b>To'g'ri topdingiz! Mashinalar uchrashdi!</b><br>Yaqinlashish tezligi: ${currentP2.v1} + ${currentP2.v2} = ${vSum} km/soat.<br>Uchrashuv vaqti: ${currentP2.s} : ${vSum} = <b>${currentP2.target} soat</b>.`;
+          msgEl.innerHTML = `🎉 <b>To'g'ri topdingiz! Transportlar uchrashdi!</b><br>Yaqinlashish tezligi: ${currentP2.v1} + ${currentP2.v2} = ${vSum} km/soat.<br>Uchrashuv vaqti: ${currentP2.s} : ${vSum} = <b>${currentP2.target} soat</b>.`;
           document.getElementById('p2-next-btn').style.display = 'inline-flex';
         } else {
           playErrorSound();
           streak2 = 0;
           document.getElementById('streak2').innerText = streak2;
           resEl.className = 'result-alert error';
-          msgEl.innerHTML = `❌ <b>Javob noto'g'ri.</b><br>Eslatma: Qarama-qarshi harakatda tezliklar qo'shiladi: v = v₁ + v₂.<br>So'ng umumiy masofa shu tezlikka bo'linadi.`;
+          msgEl.innerHTML = `❌ <b>Javob noto'g'ri.</b><br>Qarama-qarshi harakatda tezliklar qo'shiladi: v = v₁ + v₂.<br>So'ng umumiy masofa shu tezlikka bo'linadi.`;
           document.getElementById('p2-check-btn').disabled = false;
         }
       });
@@ -1642,7 +1699,7 @@
     }
 
     // ==========================================
-    // SECTION 3: LABORATORIYA
+    // 3-BOSQICH: LABORATORIYA
     // ==========================================
     function updateLab() {
       const v = parseInt(document.getElementById('lab-v-range').value);
@@ -1657,7 +1714,7 @@
       document.getElementById('lab-s-val').innerText = s + ' km';
       document.getElementById('car3-label').innerText = v + ' km/h';
 
-      // Render hour step flags on road
+      // Hour step flags
       const cont = document.getElementById('hour-markers-container');
       cont.innerHTML = '';
       for (let h = 1; h <= t; h++) {
@@ -1678,25 +1735,25 @@
       const targetPct = 4 + (Math.min(s, 300) / 300) * 88;
 
       playTone(320, 0.1);
-      resetVehiclePosition('car3', 4);
+      resetCar('car3', 4);
       setTimeout(() => {
-        animateVehicleSmooth('car3', 4, targetPct, 1600, () => {
+        animateCarForward('car3', 4, targetPct, 1600, () => {
           playWinSound();
         });
       }, 100);
     }
 
     function resetLab() {
-      resetVehiclePosition('car3', 4);
+      resetCar('car3', 4);
       updateLab();
     }
 
     // ==========================================
-    // ANIMATION HELPER FUNCTIONS
+    // ANIMATION & WHEEL ROTATION ENGINES
     // ==========================================
-    function resetVehiclePosition(carId, defaultPct, fromRight = false) {
+    function resetCar(carId, defaultPct, fromRight = false) {
       const car = document.getElementById(carId);
-      car.classList.remove('is-moving');
+      car.classList.remove('is-moving-forward', 'is-moving-backward');
       if (fromRight) {
         car.style.right = defaultPct + '%';
         car.style.left = 'auto';
@@ -1710,9 +1767,10 @@
       document.getElementById(id).style.display = 'none';
     }
 
-    function animateVehicleSmooth(carId, startPct, endPct, durationMs, onDone) {
+    function animateCarForward(carId, startPct, endPct, durationMs, onDone) {
       const car = document.getElementById(carId);
-      car.classList.add('is-moving');
+      // Moving right -> wheels spin forward (clockwise)
+      car.classList.add('is-moving-forward');
       const startTime = performance.now();
 
       playTone(260, durationMs / 1000, 'triangle', 0.12);
@@ -1727,7 +1785,7 @@
         if (progress < 1) {
           requestAnimationFrame(frame);
         } else {
-          car.classList.remove('is-moving');
+          car.classList.remove('is-moving-forward');
           if (onDone) onDone();
         }
       }
@@ -1737,8 +1795,10 @@
     function animateCarsMeeting(carLeftId, carRightId, startLeft, endLeft, startRight, endRight, durationMs, onDone) {
       const carL = document.getElementById(carLeftId);
       const carR = document.getElementById(carRightId);
-      carL.classList.add('is-moving');
-      carR.classList.add('is-moving');
+
+      // Left car moves right (forward), right car moves left (facing left, forward spin in its coordinate)
+      carL.classList.add('is-moving-forward');
+      carR.classList.add('is-moving-forward');
       const startTime = performance.now();
 
       playTone(250, durationMs / 1000, 'triangle', 0.12);
@@ -1757,8 +1817,8 @@
         if (progress < 1) {
           requestAnimationFrame(frame);
         } else {
-          carL.classList.remove('is-moving');
-          carR.classList.remove('is-moving');
+          carL.classList.remove('is-moving-forward');
+          carR.classList.remove('is-moving-forward');
           if (onDone) onDone();
         }
       }
@@ -1769,6 +1829,9 @@
     // INITIALIZATION
     // ==========================================
     window.onload = function() {
+      // Lab vehicle setup (Concept electric car)
+      document.getElementById('car3-svg-wrap').innerHTML = getVehicleSvg('sport', true, '#8b5cf6');
+
       renderRuler('ruler1', 240, 40);
       loadP1();
       loadP2();
